@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- 🔐 Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com;">
+    
+    <!-- 🌐 SEO & Social Meta Tags -->
+    <title>STANY BOT HOSTING | Enterprise Cloud Deployment Platform</title>
+    <meta name="title" content="STANY BOT HOSTING - Deploy WhatsApp Bots Globally">
+    <meta name="description" content="Professional 24/7 bot hosting with automatic configuration, global CDN, and enterprise-grade security. Start with 10 SQ free!">
+    <meta name="keywords" content="bot hosting, whatsapp bot, cloud deployment, firebase, github integration, automation">
+    <meta name="author" content="Stany Bot Team">
+    <meta name="robots" content="index, follow">
+    
+    <!-- 🌍 International SEO -->
+    <link rel="alternate" hreflang="en" href="https://stany-hosting.vercel.app/">
+    <link rel="alternate" hreflang="sw" href="https://stany-hosting.vercel.app/?lang=sw">
+    <link rel="canonical" href="https://stany-hosting.vercel.app/">
+    
+    <!-- 📱 Social Preview (Open Graph & Twitter) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stany-hosting.vercel.app/">
+    <meta property="og:title" content="STANY BOT HOSTING | Deploy Bots in Seconds">
+    <meta property="og:description" content="Enterprise-grade bot hosting with zero downtime, automatic scaling, and global edge network.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/stanytz378/stanyimagesservers/refs/heads/main/705D6C77-3C37-4294-A509-3C2B9C4A34D2.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="STANY BOT HOSTING">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="STANY BOT HOSTING">
+    <meta name="twitter:description" content="Deploy WhatsApp bots 24/7 with automatic app.json configuration.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/stanytz378/stanyimagesservers/refs/heads/main/705D6C77-3C37-4294-A509-3C2B9C4A34D2.png">
+    
+    <!-- 🧩 Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "STANY BOT HOSTING",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Cloud",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "1247"
+      }
+    }
+    </script>
+    
+    <!-- 🎨 CSS Frameworks & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- ⚙️ Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: {
+                        primary: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8' },
+                        dark: { 900: '#020617', 800: '#0f172a', 700: '#1e293b' }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* 🎯 Core Styles */
+        :root {
+            --glass-bg: rgba(15, 23, 42, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --shadow-primary: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        [data-theme="light"] {
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(0, 0, 0, 0.08);
+        }
+        
+        * { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+            color: #f8fafc; 
+            user-select: none;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* ✨ Glassmorphism */
+        .glass { 
+            background: var(--glass-bg); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border); 
+            box-shadow: var(--shadow-primary);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass:hover { 
+            border-color: rgba(59, 130, 246, 0.4); 
+            transform: translateY(-2px);
+            box-shadow: 0 30px 60px -15px rgba(37, 99, 235, 0.3);
+        }
+        
+        /* 🔄 Tab System */
+        .tab-content { display: none; opacity: 0; transform: translateY(15px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .tab-content.active { display: block; opacity: 1; transform: translateY(0); }
+        
+        /* 🎨 Interactive Elements */
+        .sidebar-link { 
+            position: relative; 
+            overflow: hidden; 
+            transition: all 0.25s ease;
+        }
+        .sidebar-link::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .sidebar-link.active { 
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(139, 92, 246, 0.15)); 
+            color: white; 
+            border-left: 4px solid #3b82f6;
+        }
+        .sidebar-link:hover:not(.active) { 
+            background: rgba(255, 255, 255, 0.05); 
+            transform: translateX(4px);
+        }
+        
+        /* 📝 Form Elements */
+        input, select, textarea { 
+            background: rgba(15, 23, 42, 0.6) !important; 
+            border: 1px solid rgba(30, 41, 59, 0.8) !important; 
+            color: white !important;
+            transition: all 0.2s;
+        }
+        input:focus, select:focus, textarea:focus { 
+            border-color: #3b82f6 !important; 
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
+            outline: none;
+        }
+        
+        /* ⏳ Loading States */
+        .loader { 
+            border: 3px solid rgba(30, 41, 59, 0.5); 
+            border-top-color: #3b82f6; 
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite; 
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        /* 🔔 Toast Notifications */
+        #toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 380px;
+        }
+        .toast {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+            border: 1px solid var(--glass-border);
+            border-left: 4px solid #3b82f6;
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow-primary);
+            animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+            backdrop-filter: blur(12px);
+        }
+        .toast.success { border-left-color: #10b981; }
+        .toast.error { border-left-color: #ef4444; }
+        .toast.warning { border-left-color: #f59e0b; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes fadeOut { to { opacity: 0; transform: translateX(20px); } }
+        
+        /* 🌐 Language Selector */
+        .lang-selector {
+            position: relative;
+            display: inline-block;
+        }
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 8px;
+            min-width: 160px;
+            display: none;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+        .lang-selector:hover .lang-dropdown { display: block; }
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 0.875rem;
+        }
+        .lang-option:hover { background: rgba(59, 130, 246, 0.15); }
+        .lang-option.active { background: rgba(37, 99, 235, 0.3); font-weight: 600; }
+        
+        /* 🎨 Premium Animations */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #60a5fa, #a78bfa, #60a5fa);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s linear infinite;
+        }
+        
+        /* ♿ Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        .sr-only {
+            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+            overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+        }
+        
+        /* 📱 Responsive Enhancements */
+        @media (max-width: 1024px) {
+            .sidebar-link span { display: none; }
+            .sidebar-link i { margin: 0 auto; font-size: 1.25rem; }
+            aside { width: 80px !important; padding: 1.5rem 1rem !important; }
+            aside h1 { display: none; }
+            main { margin-left: 80px !important; }
+            footer { margin-left: 80px !important; }
+        }
+        @media (max-width: 640px) {
+            .glass { border-radius: 1.5rem !important; }
+            header { flex-direction: column; align-items: flex-start !important; gap: 16px; }
+            .grid-cols-4 { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+    </style>
+</head>
+<body class="antialiased" oncontextmenu="return false;">
+
+    <!-- 🔔 Toast Notification Container -->
+    <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- ⏳ Premium Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[100] bg-dark-900 flex flex-col items-center justify-center transition-opacity duration-500">
+        <div class="relative">
+            <div class="loader w-16 h-16 mb-6"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <i class="fa-solid fa-cloud-bolt text-blue-500 text-2xl animate-pulse"></i>
+            </div>
+        </div>
+        <p class="text-xs font-bold tracking-[0.3em] text-blue-400 uppercase animate-pulse-slow">Initializing Enterprise Platform...</p>
+        <div class="mt-8 w-48 h-1 bg-dark-800 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-blue-500 to-violet-500 rounded-full animate-pulse" style="width: 75%"></div>
+        </div>
+    </div>
+
+    <!-- 🔐 Authentication Page -->
+    <div id="auth-page" class="hidden min-h-screen flex items-center justify-center p-4 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] bg-fixed">
+        <div class="glass max-w-md w-full p-8 md:p-10 rounded-[2rem] shadow-2xl relative border border-white/10">
+            <!-- Decorative Elements -->
+            <div class="absolute -top-4 -right-4 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl"></div>
+            <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-violet-500/10 rounded-full blur-3xl"></div>
+            
+            <div class="relative z-10">
+                <div class="flex justify-center mb-8">
+                    <div class="relative">
+                        <img src="https://raw.githubusercontent.com/stanytz378/stanyimagesservers/refs/heads/main/705D6C77-3C37-4294-A509-3C2B9C4A34D2.png" 
+                             class="w-20 h-20 rounded-2xl shadow-2xl border-2 border-blue-500/30 animate-float" 
+                             alt="STANY BOT HOSTING Logo"
+                             loading="eager">
+                        <span class="absolute -bottom-1 -right-1 bg-green-500 w-5 h-5 rounded-full border-2 border-dark-900 flex items-center justify-center">
+                            <i class="fa-solid fa-check text-[10px] text-white"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div id="auth-form">
+                    <h1 id="auth-title" class="text-2xl md:text-3xl font-black text-center mb-2 uppercase tracking-tighter gradient-text">Welcome Back</h1>
+                    <p class="text-slate-400 text-sm text-center mb-8" data-i18n="auth.subtitle">Access your enterprise bot deployment dashboard</p>
+                    
+                    <form id="auth-form-element" class="space-y-5" onsubmit="event.preventDefault(); handleAuth();">
+                        <div id="register-only" class="hidden space-y-4">
+                            <div>
+                                <label for="reg-user" class="sr-only" data-i18n="form.username">Username</label>
+                                <input id="reg-user" type="text" placeholder="Username" 
+                                       class="w-full px-5 py-3.5 rounded-xl outline-none focus:border-blue-500 transition-all"
+                                       autocomplete="username" required minlength="3" maxlength="24">
+                            </div>
+                            <div>
+                                <label for="reg-ref" class="sr-only" data-i18n="form.referral">Referral Code</label>
+                                <input id="reg-ref" type="text" placeholder="Referral Code (Optional)" 
+                                       class="w-full px-5 py-3.5 rounded-xl outline-none focus:border-blue-500 transition-all"
+                                       pattern="[A-Z0-9]{6,}" title="6+ uppercase letters/numbers">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="auth-email" class="sr-only" data-i18n="form.email">Email Address</label>
+                            <input id="auth-email" type="email" placeholder="Email Address" 
+                                   class="w-full px-5 py-3.5 rounded-xl outline-none focus:border-blue-500 transition-all"
+                                   autocomplete="email" required>
+                        </div>
+                        
+                        <div>
+                            <label for="auth-pass" class="sr-only" data-i18n="form.password">Password</label>
+                            <div class="relative">
+                                <input id="auth-pass" type="password" placeholder="Password" 
+                                       class="w-full px-5 py-3.5 rounded-xl outline-none focus:border-blue-500 transition-all pr-12"
+                                       autocomplete="current-password" required minlength="6">
+                                <button type="button" onclick="togglePassword('auth-pass')" 
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white transition-colors"
+                                        aria-label="Toggle password visibility">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <button id="main-auth-btn" type="submit" 
+                                class="w-full bg-gradient-to-r from-blue-600 to-blue-700 py-4 rounded-xl font-black tracking-widest hover:from-blue-500 hover:to-blue-600 transition-all shadow-lg shadow-blue-600/25 active:scale-[0.98]">
+                            <span class="flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                                <span data-i18n="auth.signin">SIGN IN</span>
+                            </span>
+                        </button>
+                        
+                        <div class="flex items-center my-2">
+                            <div class="flex-1 border-t border-slate-800"></div>
+                            <span class="px-4 text-[10px] text-slate-500 uppercase font-bold tracking-wider">OR CONTINUE WITH</span>
+                            <div class="flex-1 border-t border-slate-800"></div>
+                        </div>
+                        
+                        <button type="button" onclick="loginWithGithub()" 
+                                class="w-full bg-white/10 hover:bg-white/20 text-white py-3.5 rounded-xl font-bold flex items-center justify-center gap-3 transition-all border border-white/10 hover:border-white/20">
+                            <i class="fa-brands fa-github text-lg"></i> 
+                            <span data-i18n="auth.github">GitHub Account</span>
+                        </button>
+                    </form>
+                    
+                    <p class="text-center mt-8 text-sm text-slate-400">
+                        <span id="switch-text" data-i18n="auth.new">New here?</span> 
+                        <button type="button" onclick="toggleAuth()" id="switch-btn" 
+                                class="text-blue-400 hover:text-blue-300 font-bold ml-1 transition-colors underline-offset-4 hover:underline">
+                            <span data-i18n="auth.create">Create Account</span>
+                        </button>
+                    </p>
+                    
+                    <div class="mt-6 pt-6 border-t border-slate-800/50 text-center">
+                        <p class="text-[11px] text-slate-500">
+                            <span data-i18n="auth.terms">By continuing, you agree to our</span> 
+                            <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors" data-i18n="auth.termslink">Terms of Service</a> 
+                            <span data-i18n="auth.and">and</span> 
+                            <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors" data-i18n="auth.privacy">Privacy Policy</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🎛️ Main Dashboard Application -->
+    <div id="app-container" class="hidden min-h-screen flex flex-col lg:flex-row">
+        
+        <!-- 🧭 SIDE NAVIGATION -->
+        <aside class="w-full lg:w-72 glass border-r border-slate-800/50 p-6 flex flex-col fixed h-screen z-50 overflow-y-auto">
+            <div class="flex items-center justify-between mb-10">
+                <div class="flex items-center gap-3">
+                    <img src="https://raw.githubusercontent.com/stanytz378/stanyimagesservers/refs/heads/main/705D6C77-3C37-4294-A509-3C2B9C4A34D2.png" 
+                         class="w-10 h-10 rounded-xl border border-blue-500/30" 
+                         alt="Logo" loading="eager">
+                    <h1 class="font-black text-lg tracking-tighter uppercase gradient-text hidden lg:block">Stany Host</h1>
+                </div>
+                
+                <!-- 🌐 Language & Theme Toggle -->
+                <div class="flex items-center gap-2">
+                    <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-white/10 transition-colors" 
+                            aria-label="Toggle theme" title="Toggle light/dark mode">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    <div class="lang-selector">
+                        <button class="p-2 rounded-lg hover:bg-white/10 transition-colors flex items-center gap-1" 
+                                aria-label="Select language" title="Change language">
+                            <i class="fa-solid fa-globe"></i>
+                            <span class="text-xs font-bold hidden lg:inline">EN</span>
+                        </button>
+                        <div class="lang-dropdown">
+                            <div class="lang-option active" onclick="setLanguage('en')" data-lang="en">
+                                <i class="fa-solid fa-language"></i> English
+                            </div>
+                            <div class="lang-option" onclick="setLanguage('sw')" data-lang="sw">
+                                <i class="fa-solid fa-language"></i> Kiswahili
+                            </div>
+                            <div class="lang-option" onclick="setLanguage('fr')" data-lang="fr">
+                                <i class="fa-solid fa-language"></i> Français
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="flex-1 space-y-2" role="navigation" aria-label="Main navigation">
+                <button onclick="showTab('dashboard')" class="sidebar-link active w-full flex items-center gap-4 px-5 py-3.5 rounded-xl text-slate-300 font-semibold transition-all" aria-current="page">
+                    <i class="fa-solid fa-gauge-high w-5 text-center"></i>
+                    <span class="hidden lg:inline" data-i18n="nav.dashboard">Dashboard</span>
+                </button>
+                <button onclick="showTab('deploy')" class="sidebar-link w-full flex items-center gap-4 px-5 py-3.5 rounded-xl text-slate-300 font-semibold transition-all">
+                    <i class="fa-solid fa-rocket w-5 text-center"></i>
+                    <span class="hidden lg:inline" data-i18n="nav.deploy">New Deploy</span>
+                </button>
+                <button onclick="showTab('shop')" class="sidebar-link w-full flex items-center gap-4 px-5 py-3.5 rounded-xl text-slate-300 font-semibold transition-all">
+                    <i class="fa-solid fa-cart-shopping w-5 text-center"></i>
+                    <span class="hidden lg:inline" data-i18n="nav.shop">Shop SQ</span>
+                </button>
+                <button onclick="showTab('referral')" class="sidebar-link w-full flex items-center gap-4 px-5 py-3.5 rounded-xl text-slate-300 font-semibold transition-all">
+                    <i class="fa-solid fa-users w-5 text-center"></i>
+                    <span class="hidden lg:inline" data-i18n="nav.referrals">Referrals</span>
+                </button>
+                <button onclick="showTab('profile')" class="sidebar-link w-full flex items-center gap-4 px-5 py-3.5 rounded-xl text-slate-300 font-semibold transition-all">
+                    <i class="fa-solid fa-user w-5 text-center"></i>
+                    <span class="hidden lg:inline" data-i18n="nav.profile">My Profile</span>
+                </button>
+                <button onclick="showTab('settings')" class="sidebar-link w-full flex items-center gap-4 px-5 py-3.5 rounded-xl text-slate-300 font-semibold transition-all">
+                    <i class="fa-solid fa-gear w-5 text-center"></i>
+                    <span class="hidden lg:inline" data-i18n="nav.settings">Settings</span>
+                </button>
+            </nav>
+
+            <div class="mt-auto pt-6 border-t border-slate-800/50 space-y-3">
+                <div class="glass p-4 rounded-xl bg-blue-500/5 border-blue-500/20">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center">
+                            <i class="fa-solid fa-coins text-yellow-300 text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider" data-i18n="dashboard.balance">Balance</p>
+                            <p id="sq-balance-mini" class="font-black text-white">0 SQ</p>
+                        </div>
+                    </div>
+                    <button onclick="showTab('shop')" class="w-full text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-plus"></i> <span data-i18n="dashboard.addsq">Add SQ Tokens</span>
+                    </button>
+                </div>
+                
+                <button onclick="userLogout()" class="w-full flex items-center gap-4 px-5 py-3.5 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-xl font-semibold transition-all">
+                    <i class="fa-solid fa-power-off w-5 text-center"></i>
+                    <span class="hidden lg:inline" data-i18n="nav.logout">Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- 📊 MAIN CONTENT AREA -->
+        <main class="flex-1 lg:ml-72 p-4 md:p-8 pb-28">
+            
+            <!-- 🎯 Header -->
+            <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+                <div>
+                    <h2 id="tab-title" class="text-2xl md:text-3xl font-black uppercase tracking-tighter gradient-text">Dashboard</h2>
+                    <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mt-1">
+                        <span data-i18n="header.userid">User ID</span>: <span id="nav-uid" class="text-blue-400 font-mono">...</span>
+                    </p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="glass px-5 py-3 rounded-2xl flex items-center gap-3 shadow-lg shadow-blue-600/10 border-blue-500/20">
+                        <i class="fa-solid fa-coins text-yellow-400 text-lg"></i>
+                        <span id="sq-balance" class="font-black text-white text-lg tracking-widest">0 SQ</span>
+                    </div>
+                    <button onclick="showTab('shop')" class="glass p-3 rounded-xl hover:bg-blue-600/20 transition-colors" 
+                            aria-label="Buy SQ tokens" title="Purchase SQ Tokens">
+                        <i class="fa-solid fa-plus text-blue-400"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- 📈 Dashboard Tab -->
+            <section id="tab-dashboard" class="tab-content active space-y-8">
+                <!-- 🎁 Premium Promo Banner -->
+                <div class="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-indigo-700 via-blue-800 to-indigo-950 p-6 md:p-10 shadow-2xl">
+                    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.05%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+                    
+                    <div class="relative z-10 flex flex-col lg:flex-row justify-between items-center gap-8">
+                        <div class="text-center lg:text-left max-w-xl">
+                            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full mb-4">
+                                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                                <span class="text-xs font-bold uppercase tracking-wider text-blue-100">New Release</span>
+                            </div>
+                            <h3 class="text-3xl md:text-4xl font-black mb-4 italic tracking-tighter gradient-text">iamlegendv2.1</h3>
+                            <p class="text-blue-100/90 mb-6 text-sm md:text-base max-w-lg leading-relaxed" data-i18n="promo.desc">
+                                Deploy the most advanced WhatsApp bot with AI capabilities, multi-device support, and enterprise-grade security. 
+                                <strong class="text-white">Free for first-time users!</strong>
+                            </p>
+                            <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                                <button onclick="deployFreeLegend()" 
+                                        class="bg-white text-blue-900 px-8 py-3.5 rounded-2xl font-black hover:bg-blue-50 transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2">
+                                    <i class="fa-solid fa-bolt"></i>
+                                    <span data-i18n="promo.deployfree">DEPLOY FREE</span>
+                                </button>
+                                <a href="https://session-id-generator-4xuy.onrender.com/qrpage" target="_blank" rel="noopener noreferrer"
+                                   class="bg-blue-500/20 backdrop-blur-md px-6 py-3.5 rounded-2xl font-bold border border-white/20 flex items-center gap-2 hover:bg-white/10 transition-all group">
+                                   <i class="fa-solid fa-qrcode group-hover:scale-110 transition-transform"></i> 
+                                   <span data-i18n="promo.scanqr">Scan QR</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-blue-400/20 rounded-3xl blur-3xl animate-pulse-slow"></div>
+                            <i class="fa-solid fa-robot text-[10rem] md:text-[12rem] text-white/10 rotate-12 animate-float"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="mt-8 pt-6 border-t border-white/10 grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <p class="text-2xl font-black text-white">99.9%</p>
+                            <p class="text-[10px] text-blue-200 uppercase tracking-wider" data-i18n="promo.uptime">Uptime</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-black text-white">50+</p>
+                            <p class="text-[10px] text-blue-200 uppercase tracking-wider" data-i18n="promo.countries">Countries</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-black text-white">24/7</p>
+                            <p class="text-[10px] text-blue-200 uppercase tracking-wider" data-i18n="promo.support">Support</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 🖥️ Live Apps Section -->
+                <div>
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold flex items-center gap-3">
+                            <i class="fa-solid fa-server text-blue-400"></i> 
+                            <span data-i18n="dashboard.runningapps">Running Applications</span>
+                        </h3>
+                        <button onclick="showTab('deploy')" class="text-sm font-bold text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1">
+                            <i class="fa-solid fa-plus"></i> <span data-i18n="dashboard.newapp">New App</span>
+                        </button>
+                    </div>
+                    
+                    <div id="running-apps" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <!-- Apps load dynamically here -->
+                        <div class="glass p-6 rounded-2xl border border-dashed border-slate-700 flex flex-col items-center justify-center text-center min-h-[200px]">
+                            <i class="fa-solid fa-inbox text-4xl text-slate-600 mb-4"></i>
+                            <p class="text-slate-400 font-medium" data-i18n="dashboard.noapps">No applications deployed yet</p>
+                            <button onclick="showTab('deploy')" class="mt-4 text-blue-400 hover:text-blue-300 font-bold text-sm transition-colors">
+                                <i class="fa-solid fa-plus mr-1"></i> <span data-i18n="dashboard.deployfirst">Deploy your first app</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 📊 Quick Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="glass p-5 rounded-2xl text-center">
+                        <i class="fa-solid fa-cloud text-blue-400 text-2xl mb-3"></i>
+                        <p class="text-2xl font-black text-white">3</p>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-wider" data-i18n="stats.active">Active</p>
+                    </div>
+                    <div class="glass p-5 rounded-2xl text-center">
+                        <i class="fa-solid fa-clock text-violet-400 text-2xl mb-3"></i>
+                        <p class="text-2xl font-black text-white">99.8h</p>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-wider" data-i18n="stats.uptime">Uptime</p>
+                    </div>
+                    <div class="glass p-5 rounded-2xl text-center">
+                        <i class="fa-solid fa-database text-emerald-400 text-2xl mb-3"></i>
+                        <p class="text-2xl font-black text-white">1.2GB</p>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-wider" data-i18n="stats.storage">Storage</p>
+                    </div>
+                    <div class="glass p-5 rounded-2xl text-center">
+                        <i class="fa-solid fa-globe text-amber-400 text-2xl mb-3"></i>
+                        <p class="text-2xl font-black text-white">12</p>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-wider" data-i18n="stats.regions">Regions</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 🚀 Deploy Tab (Heroku-Style) -->
+            <section id="tab-deploy" class="tab-content max-w-3xl mx-auto space-y-8">
+                <div class="glass p-6 md:p-10 rounded-[2.5rem] shadow-2xl border border-white/10">
+                    <div class="text-center mb-8">
+                        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-violet-500/20 mb-4 mx-auto">
+                            <i class="fa-solid fa-rocket text-2xl text-blue-400"></i>
+                        </div>
+                        <h2 class="text-2xl font-black uppercase tracking-tight gradient-text" data-i18n="deploy.title">Cloud Deployment</h2>
+                        <p class="text-slate-400 mt-2 text-sm" data-i18n="deploy.subtitle">Deploy any GitHub bot with automatic configuration parsing</p>
+                    </div>
+                    
+                    <form class="space-y-6" onsubmit="event.preventDefault(); fetchAppJson();">
+                        <div>
+                            <label for="repo-url" class="text-[10px] font-bold text-slate-400 uppercase ml-2 mb-2 block tracking-widest" data-i18n="deploy.repourl">GitHub Repository URL</label>
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <input id="repo-url" type="url" placeholder="https://github.com/username/repository" 
+                                       class="flex-1 px-5 py-4 rounded-xl outline-none focus:border-blue-500 transition-all font-mono text-sm"
+                                       pattern="https://github\.com/.+/.+" required>
+                                <button type="submit" class="bg-blue-600 hover:bg-blue-500 px-6 rounded-xl font-bold transition-all whitespace-nowrap flex items-center justify-center gap-2 min-w-[120px]">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <span data-i18n="deploy.parse">Parse</span>
+                                </button>
+                            </div>
+                            <p class="text-[10px] text-slate-500 mt-2 ml-2 flex items-center gap-1">
+                                <i class="fa-solid fa-info-circle"></i>
+                                <span data-i18n="deploy.requid">Requires <code class="bg-slate-800 px-1.5 py-0.5 rounded">app.json</code> in repository root</span>
+                            </p>
+                        </div>
+
+                        <!-- Auto-filled Variables Area -->
+                        <div id="env-area" class="hidden space-y-6 pt-6 border-t border-slate-800/50">
+                            <div class="flex items-center justify-between">
+                                <h4 class="text-xs font-bold text-blue-400 uppercase tracking-widest" data-i18n="deploy.envvars">Environment Variables</h4>
+                                <span class="text-[10px] bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full font-bold" data-i18n="deploy.autoparsed">Auto-parsed from app.json</span>
+                            </div>
+                            
+                            <div id="env-inputs" class="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                                <!-- Dynamic inputs injected here -->
+                            </div>
+                            
+                            <div class="p-4 bg-amber-500/5 rounded-2xl border border-amber-500/20 flex items-start gap-3">
+                                <i class="fa-solid fa-triangle-exclamation text-amber-400 mt-0.5"></i>
+                                <div>
+                                    <p class="text-[10px] text-amber-300 font-bold uppercase tracking-wider mb-1" data-i18n="deploy.cost">Deployment Cost</p>
+                                    <p class="text-sm text-slate-300"><span class="font-bold text-white">5 SQ Tokens</span> • Refunded if deployment fails</p>
+                                </div>
+                            </div>
+                            
+                            <button type="button" onclick="confirmDeploy()" 
+                                    class="w-full bg-gradient-to-r from-blue-600 to-violet-600 py-4.5 rounded-2xl font-black text-lg shadow-xl shadow-blue-600/25 uppercase tracking-tighter hover:from-blue-500 hover:to-violet-500 transition-all active:scale-[0.99] flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-play"></i>
+                                <span data-i18n="deploy.launch">Launch Application</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- 💡 Helpful Tips -->
+                <div class="glass p-6 rounded-2xl border border-blue-500/20">
+                    <h4 class="font-bold text-blue-400 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span data-i18n="deploy.tips">Pro Tips</span>
+                    </h4>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                            <span data-i18n="deploy.tip1">Use environment variables for sensitive data like API keys and session IDs</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                            <span data-i18n="deploy.tip2">Test your bot locally before deploying to ensure compatibility</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                            <span data-i18n="deploy.tip3">Monitor resource usage in Dashboard to optimize performance</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 🛒 Shop Tab -->
+            <section id="tab-shop" class="tab-content">
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tighter gradient-text mb-3" data-i18n="shop.title">SQ Token Store</h2>
+                    <p class="text-slate-400 max-w-2xl mx-auto" data-i18n="shop.subtitle">Purchase SQ tokens to deploy more applications. All prices in Tanzanian Shillings (TZS). International payment options available.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                    <script>
+                        // Premium package configuration with international pricing
+                        const packages = [
+                            {q:15, p:'1,000', t:'30 Days', popular:false, color:'blue'}, 
+                            {q:35, p:'2,000', t:'30 Days', popular:true, color:'violet'}, 
+                            {q:60, p:'3,000', t:'30 Days', popular:false, color:'indigo'},
+                            {q:150, p:'5,000', t:'30 Days', popular:false, color:'purple'},
+                            {q:80, p:'4,000', t:'30 Days', popular:false, color:'fuchsia'},
+                            {q:15, p:'2,000', t:'Unlimited', popular:false, color:'emerald'},
+                            {q:35, p:'3,000', t:'Unlimited', popular:false, color:'cyan'}
+                        ];
+                        
+                        packages.forEach(pkg => {
+                            const popularBadge = pkg.popular ? 
+                                `<span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-orange-500 text-black text-[10px] font-black px-4 py-1 rounded-full shadow-lg animate-pulse">MOST POPULAR</span>` : '';
+                            
+                            const borderColor = pkg.popular ? 'border-amber-500/50' : 'border-white/5';
+                            const glowEffect = pkg.popular ? 'shadow-amber-500/20 hover:shadow-amber-500/40' : 'shadow-blue-600/10 hover:shadow-blue-500/30';
+                            
+                            document.write(`
+                                <div class="glass p-7 rounded-[2rem] text-center hover:scale-[1.02] transition-all ${borderColor} relative group ${glowEffect}">
+                                    ${popularBadge}
+                                    <span class="bg-${pkg.color}-500/10 text-${pkg.color}-400 text-[10px] font-black px-4 py-1.5 rounded-full uppercase mb-5 inline-block tracking-widest border border-${pkg.color}-500/20">${pkg.t}</span>
+                                    <p class="text-5xl font-black mb-2 gradient-text">${pkg.q}</p>
+                                    <p class="text-${pkg.color}-400 text-xs font-bold mb-6 tracking-widest uppercase">SQ Tokens</p>
+                                    <p class="text-xl font-black mb-8 flex items-center justify-center gap-1">
+                                        <span class="text-slate-400 text-sm">TZS</span> ${pkg.p}/=
+                                    </p>
+                                    <button onclick="buySQ('${pkg.q}', '${pkg.p}', '${pkg.t}')" 
+                                            class="w-full bg-${pkg.color}-600 hover:bg-${pkg.color}-500 py-4 rounded-xl font-black transition-all shadow-lg hover:shadow-xl active:scale-[0.98] flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-cart-plus"></i>
+                                        <span data-i18n="shop.order">ORDER NOW</span>
+                                    </button>
+                                    <p class="text-[10px] text-slate-500 mt-4 flex items-center justify-center gap-1">
+                                        <i class="fa-solid fa-shield-halved"></i>
+                                        <span data-i18n="shop.secure">Secure Payment via WhatsApp</span>
+                                    </p>
+                                </div>
+                            `);
+                        });
+                    </script>
+                </div>
+                
+                <!-- 💳 Payment Methods -->
+                <div class="mt-12 glass p-6 rounded-2xl text-center">
+                    <p class="text-slate-400 text-sm mb-4" data-i18n="shop.payment">We accept multiple payment methods:</p>
+                    <div class="flex flex-wrap justify-center items-center gap-4 opacity-70">
+                        <i class="fa-brands fa-whatsapp text-3xl text-green-500" title="WhatsApp Payment"></i>
+                        <i class="fa-solid fa-mobile-screen-button text-2xl text-slate-300" title="Mobile Money"></i>
+                        <i class="fa-solid fa-credit-card text-2xl text-slate-300" title="Credit/Debit Card"></i>
+                        <i class="fa-brands fa-bitcoin text-2xl text-amber-400" title="Cryptocurrency"></i>
+                    </div>
+                    <p class="text-[10px] text-slate-500 mt-4" data-i18n="shop.note">* International customers: Contact support for USD/EUR pricing</p>
+                </div>
+            </section>
+
+            <!-- 👥 Referral Tab -->
+            <section id="tab-referral" class="tab-content max-w-2xl mx-auto space-y-6">
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass p-6 rounded-2xl text-center hover:border-blue-500/30 transition-colors">
+                        <i class="fa-solid fa-users text-blue-400 text-2xl mb-3"></i>
+                        <p class="text-slate-400 text-[10px] font-bold uppercase mb-1 tracking-wider" data-i18n="referral.invited">Total Invited</p>
+                        <p id="ref-count" class="text-3xl font-black gradient-text">0</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl text-center hover:border-emerald-500/30 transition-colors">
+                        <i class="fa-solid fa-gift text-emerald-400 text-2xl mb-3"></i>
+                        <p class="text-slate-400 text-[10px] font-bold uppercase mb-1 tracking-wider" data-i18n="referral.earned">Total Earned</p>
+                        <p id="ref-earn" class="text-3xl font-black text-emerald-400">+0 SQ</p>
+                    </div>
+                </div>
+                
+                <!-- Referral Program Card -->
+                <div class="glass p-8 rounded-[2.5rem] text-center border border-white/10">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 mb-6 mx-auto">
+                        <i class="fa-solid fa-gift text-3xl text-violet-400"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-3 gradient-text" data-i18n="referral.title">Referral Program</h3>
+                    <p class="text-slate-300 text-sm mb-8 leading-relaxed" data-i18n="referral.desc">
+                        Share your unique link and earn <strong class="text-white">3 SQ tokens</strong> for every person who joins and creates a verified account. No limits on earnings!
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                        <input id="ref-link" readonly type="text" 
+                               class="flex-1 bg-slate-900/50 border border-slate-700 px-5 py-4 rounded-xl outline-none text-xs font-mono text-blue-300 focus:border-blue-500 transition-all"
+                               aria-label="Your referral link">
+                        <button onclick="copyRef()" 
+                                class="bg-blue-600 hover:bg-blue-500 px-6 rounded-xl font-black transition-all flex items-center justify-center gap-2 min-w-[100px] active:scale-[0.98]">
+                            <i class="fa-solid fa-copy"></i>
+                            <span data-i18n="referral.copy">Copy</span>
+                        </button>
+                    </div>
+                    
+                    <div class="mt-8 pt-6 border-t border-slate-800/50 grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <p class="text-lg font-black text-white">3 SQ</p>
+                            <p class="text-[10px] text-slate-400 uppercase" data-i18n="referral.perfriend">Per Friend</p>
+                        </div>
+                        <div>
+                            <p class="text-lg font-black text-white">∞</p>
+                            <p class="text-[10px] text-slate-400 uppercase" data-i18n="referral.nolimit">No Limit</p>
+                        </div>
+                        <div>
+                            <p class="text-lg font-black text-white">Instant</p>
+                            <p class="text-[10px] text-slate-400 uppercase" data-i18n="referral.instant">Payout</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- How It Works -->
+                <div class="glass p-6 rounded-2xl">
+                    <h4 class="font-bold text-center mb-6 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-list-check text-blue-400"></i>
+                        <span data-i18n="referral.how">How It Works</span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 font-bold text-blue-400">1</div>
+                            <p class="text-slate-300 text-sm" data-i18n="referral.step1">Share your referral link on social media, WhatsApp, or with friends</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-violet-500/20 flex items-center justify-center flex-shrink-0 font-bold text-violet-400">2</div>
+                            <p class="text-slate-300 text-sm" data-i18n="referral.step2">Your friend signs up using your link and verifies their account</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 font-bold text-emerald-400">3</div>
+                            <p class="text-slate-300 text-sm" data-i18n="referral.step3">You instantly receive 3 SQ tokens in your account balance</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 👤 Profile Tab -->
+            <section id="tab-profile" class="tab-content max-w-md mx-auto">
+                <div class="glass p-8 rounded-[2.5rem] text-center border border-white/10">
+                    <!-- Profile Picture with Upload -->
+                    <div class="relative w-32 h-32 mx-auto mb-6 group">
+                        <img id="user-pfp" src="https://ui-avatars.com/api/?name=User&background=0f172a&color=60a5fa" 
+                             class="w-full h-full rounded-full border-4 border-blue-600/50 p-1 object-cover transition-transform group-hover:scale-105" 
+                             alt="Profile Picture" loading="lazy">
+                        <label class="absolute bottom-1 right-1 bg-gradient-to-br from-blue-600 to-violet-600 w-10 h-10 rounded-full border-4 border-dark-900 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform shadow-lg"
+                               title="Change profile picture" aria-label="Upload new profile picture">
+                            <i class="fa-solid fa-camera text-xs text-white"></i>
+                            <input type="file" id="pfp-input" class="hidden" accept="image/*" onchange="handleProfileUpload(event)">
+                        </label>
+                        <div id="pfp-upload-progress" class="absolute inset-0 bg-black/50 rounded-full flex items-center justify-center hidden">
+                            <div class="loader w-8 h-8 border-2"></div>
+                        </div>
+                    </div>
+                    
+                    <h3 id="user-display-name" class="text-2xl font-black italic mb-1 uppercase tracking-tighter gradient-text">...</h3>
+                    <p id="user-email" class="text-slate-400 text-sm font-medium mb-6 break-all">...</p>
+                    
+                    <!-- Account Badges -->
+                    <div class="flex justify-center gap-2 mb-8 flex-wrap">
+                        <span class="bg-blue-500/10 text-blue-400 text-[10px] font-bold px-3 py-1 rounded-full border border-blue-500/20">
+                            <i class="fa-solid fa-shield-check mr-1"></i> Verified
+                        </span>
+                        <span class="bg-emerald-500/10 text-emerald-400 text-[10px] font-bold px-3 py-1 rounded-full border border-emerald-500/20">
+                            <i class="fa-solid fa-star mr-1"></i> Premium
+                        </span>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <button class="w-full glass py-4 rounded-xl font-bold flex items-center justify-center gap-3 hover:bg-white/5 transition-colors border border-white/10">
+                            <i class="fa-brands fa-github text-lg"></i> 
+                            <span data-i18n="profile.sync">Sync GitHub Profile</span>
+                        </button>
+                        <button class="w-full glass py-4 rounded-xl font-bold flex items-center justify-center gap-3 hover:bg-white/5 transition-colors border border-white/10">
+                            <i class="fa-solid fa-key text-lg"></i> 
+                            <span data-i18n="profile.changepass">Change Password</span>
+                        </button>
+                        <button onclick="userLogout()" 
+                                class="w-full bg-red-500/10 hover:bg-red-500/20 text-red-400 hover:text-red-300 border border-red-500/20 py-4 rounded-xl font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-power-off"></i>
+                            <span data-i18n="nav.logout">Sign Out</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Account Info -->
+                    <div class="mt-8 pt-6 border-t border-slate-800/50 text-left space-y-3">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-slate-400" data-i18n="profile.member">Member Since</span>
+                            <span id="member-since" class="font-medium">Loading...</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-slate-400" data-i18n="profile.lastlogin">Last Login</span>
+                            <span id="last-login" class="font-medium">Loading...</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-slate-400" data-i18n="profile.region">Region</span>
+                            <span class="font-medium flex items-center gap-1">
+                                <i class="fa-solid fa-location-dot text-slate-500"></i>
+                                <span id="user-region">Global</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ⚙️ Settings Tab (NEW) -->
+            <section id="tab-settings" class="tab-content max-w-2xl mx-auto space-y-6">
+                <div class="glass p-8 rounded-[2.5rem] border border-white/10">
+                    <h2 class="text-2xl font-black uppercase tracking-tighter gradient-text mb-6 text-center" data-i18n="settings.title">Account Settings</h2>
+                    
+                    <div class="space-y-6">
+                        <!-- Notification Preferences -->
+                        <div>
+                            <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+                                <i class="fa-solid fa-bell text-blue-400"></i>
+                                <span data-i18n="settings.notifications">Notifications</span>
+                            </h3>
+                            <div class="space-y-3">
+                                <label class="flex items-center justify-between p-4 glass rounded-xl cursor-pointer hover:bg-white/5 transition-colors">
+                                    <div>
+                                        <p class="font-medium" data-i18n="settings.deployalerts">Deployment Alerts</p>
+                                        <p class="text-xs text-slate-400" data-i18n="settings.deployalerts.desc">Get notified when apps start/stop</p>
+                                    </div>
+                                    <input type="checkbox" checked class="toggle-checkbox">
+                                </label>
+                                <label class="flex items-center justify-between p-4 glass rounded-xl cursor-pointer hover:bg-white/5 transition-colors">
+                                    <div>
+                                        <p class="font-medium" data-i18n="settings.securityalerts">Security Alerts</p>
+                                        <p class="text-xs text-slate-400" data-i18n="settings.securityalerts.desc">Login attempts and suspicious activity</p>
+                                    </div>
+                                    <input type="checkbox" checked class="toggle-checkbox">
+                                </label>
+                                <label class="flex items-center justify-between p-4 glass rounded-xl cursor-pointer hover:bg-white/5 transition-colors">
+                                    <div>
+                                        <p class="font-medium" data-i18n="settings.promotions">Promotional Updates</p>
+                                        <p class="text-xs text-slate-400" data-i18n="settings.promotions.desc">New features and special offers</p>
+                                    </div>
+                                    <input type="checkbox" class="toggle-checkbox">
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Privacy & Data -->
+                        <div>
+                            <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+                                <i class="fa-solid fa-shield-halved text-emerald-400"></i>
+                                <span data-i18n="settings.privacy">Privacy & Data</span>
+                            </h3>
+                            <div class="space-y-4">
+                                <button class="w-full glass py-4 rounded-xl font-bold flex items-center justify-center gap-3 hover:bg-white/5 transition-colors">
+                                    <i class="fa-solid fa-download"></i>
+                                    <span data-i18n="settings.export">Export My Data</span>
+                                </button>
+                                <button class="w-full glass py-4 rounded-xl font-bold flex items-center justify-center gap-3 hover:bg-white/5 transition-colors">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span data-i18n="settings.delete">Delete Account</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- API Access (Premium) -->
+                        <div class="p-5 glass rounded-2xl border border-violet-500/30 bg-violet-500/5">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <h3 class="font-bold text-violet-300 flex items-center gap-2">
+                                        <i class="fa-solid fa-code"></i>
+                                        <span data-i18n="settings.api">API Access</span>
+                                    </h3>
+                                    <p class="text-xs text-slate-400 mt-1" data-i18n="settings.api.desc">Manage your API keys for programmatic access</p>
+                                </div>
+                                <span class="bg-violet-500/20 text-violet-300 text-[10px] font-bold px-3 py-1 rounded-full">Premium</span>
+                            </div>
+                            <button class="w-full bg-violet-600/20 hover:bg-violet-600/30 text-violet-300 py-3 rounded-xl font-bold transition-colors border border-violet-500/30">
+                                <span data-i18n="settings.apibtn">Manage API Keys</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- System Status -->
+                <div class="glass p-6 rounded-2xl">
+                    <h3 class="font-bold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-heart-pulse text-emerald-400"></i>
+                        <span data-i18n="settings.status">System Status</span>
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-slate-400">API Services</span>
+                            <span class="flex items-center gap-2 text-emerald-400 font-medium">
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                                Operational
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-slate-400">Deployment Queue</span>
+                            <span class="text-slate-300 font-medium">Normal (2 min avg)</span>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-slate-400">Global CDN</span>
+                            <span class="flex items-center gap-2 text-emerald-400 font-medium">
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full"></span>
+                                12 Regions Active
+                            </span>
+                        </div>
+                    </div>
+                    <a href="#" class="block mt-4 text-center text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors">
+                        <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>
+                        <span data-i18n="settings.statuspage">View Full Status Page</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- 🦶 Copyright Footer -->
+        <footer class="lg:ml-72 fixed bottom-0 left-0 right-0 p-4 text-center text-[10px] text-slate-500 font-medium tracking-wide bg-dark-900/90 backdrop-blur-md border-t border-slate-800/50 z-40">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6">
+                <span>&copy; <span id="current-year">2025</span> STANY BOT HOSTING</span>
+                <span class="hidden md:inline">•</span>
+                <a href="#" class="hover:text-blue-400 transition-colors" data-i18n="footer.terms">Terms of Service</a>
+                <span class="hidden md:inline">•</span>
+                <a href="#" class="hover:text-blue-400 transition-colors" data-i18n="footer.privacy">Privacy Policy</a>
+                <span class="hidden md:inline">•</span>
+                <a href="#" class="hover:text-blue-400 transition-colors" data-i18n="footer.support">Support</a>
+            </div>
+            <p class="mt-2 text-[9px] text-slate-600 uppercase tracking-wider">
+                <span data-i18n="footer.standard">Enterprise Cloud Standard</span> • 
+                <span class="text-emerald-400">ISO 27001 Compliant</span> • 
+                <span data-i18n="footer.team">STANY BOT TEAM</span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- 🔧 Utility Scripts -->
+    <script>
+        // 🌙 Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+            showToast(isDark ? 'Light mode enabled' : 'Dark mode enabled', 'success');
+        }
+        
+        // 🌐 Language System (i18n)
+        const translations = {
+            en: {
+                "auth.subtitle": "Access your enterprise bot deployment dashboard",
+                "form.username": "Username",
+                "form.referral": "Referral Code",
+                "form.email": "Email Address",
+                "form.password": "Password",
+                "auth.signin": "SIGN IN",
+                "auth.github": "GitHub Account",
+                "auth.new": "New here?",
+                "auth.create": "Create Account",
+                "auth.terms": "By continuing, you agree to our",
+                "auth.termslink": "Terms of Service",
+                "auth.and": "and",
+                "auth.privacy": "Privacy Policy",
+                "nav.dashboard": "Dashboard",
+                "nav.deploy": "New Deploy",
+                "nav.shop": "Shop SQ",
+                "nav.referrals": "Referrals",
+                "nav.profile": "My Profile",
+                "nav.settings": "Settings",
+                "nav.logout": "Logout",
+                "dashboard.balance": "Balance",
+                "dashboard.addsq": "Add SQ Tokens",
+                "header.userid": "User ID",
+                "promo.desc": "Deploy the most advanced WhatsApp bot with AI capabilities, multi-device support, and enterprise-grade security. <strong class=\"text-white\">Free for first-time users!</strong>",
+                "promo.deployfree": "DEPLOY FREE",
+                "promo.scanqr": "Scan QR",
+                "promo.uptime": "Uptime",
+                "promo.countries": "Countries",
+                "promo.support": "Support",
+                "dashboard.runningapps": "Running Applications",
+                "dashboard.newapp": "New App",
+                "dashboard.noapps": "No applications deployed yet",
+                "dashboard.deployfirst": "Deploy your first app",
+                "stats.active": "Active",
+                "stats.uptime": "Uptime",
+                "stats.storage": "Storage",
+                "stats.regions": "Regions",
+                "deploy.title": "Cloud Deployment",
+                "deploy.subtitle": "Deploy any GitHub bot with automatic configuration parsing",
+                "deploy.repourl": "GitHub Repository URL",
+                "deploy.parse": "Parse",
+                "deploy.requid": "Requires <code class=\"bg-slate-800 px-1.5 py-0.5 rounded\">app.json</code> in repository root",
+                "deploy.envvars": "Environment Variables",
+                "deploy.autoparsed": "Auto-parsed from app.json",
+                "deploy.cost": "Deployment Cost",
+                "deploy.launch": "Launch Application",
+                "deploy.tips": "Pro Tips",
+                "deploy.tip1": "Use environment variables for sensitive data like API keys and session IDs",
+                "deploy.tip2": "Test your bot locally before deploying to ensure compatibility",
+                "deploy.tip3": "Monitor resource usage in Dashboard to optimize performance",
+                "shop.title": "SQ Token Store",
+                "shop.subtitle": "Purchase SQ tokens to deploy more applications. All prices in Tanzanian Shillings (TZS). International payment options available.",
+                "shop.order": "ORDER NOW",
+                "shop.secure": "Secure Payment via WhatsApp",
+                "shop.payment": "We accept multiple payment methods:",
+                "shop.note": "* International customers: Contact support for USD/EUR pricing",
+                "referral.invited": "Total Invited",
+                "referral.earned": "Total Earned",
+                "referral.title": "Referral Program",
+                "referral.desc": "Share your unique link and earn <strong class=\"text-white\">3 SQ tokens</strong> for every person who joins and creates a verified account. No limits on earnings!",
+                "referral.copy": "Copy",
+                "referral.perfriend": "Per Friend",
+                "referral.nolimit": "No Limit",
+                "referral.instant": "Payout",
+                "referral.how": "How It Works",
+                "referral.step1": "Share your referral link on social media, WhatsApp, or with friends",
+                "referral.step2": "Your friend signs up using your link and verifies their account",
+                "referral.step3": "You instantly receive 3 SQ tokens in your account balance",
+                "profile.sync": "Sync GitHub Profile",
+                "profile.changepass": "Change Password",
+                "profile.member": "Member Since",
+                "profile.lastlogin": "Last Login",
+                "profile.region": "Region",
+                "settings.title": "Account Settings",
+                "settings.notifications": "Notifications",
+                "settings.deployalerts": "Deployment Alerts",
+                "settings.deployalerts.desc": "Get notified when apps start/stop",
+                "settings.securityalerts": "Security Alerts",
+                "settings.securityalerts.desc": "Login attempts and suspicious activity",
+                "settings.promotions": "Promotional Updates",
+                "settings.promotions.desc": "New features and special offers",
+                "settings.privacy": "Privacy & Data",
+                "settings.export": "Export My Data",
+                "settings.delete": "Delete Account",
+                "settings.api": "API Access",
+                "settings.api.desc": "Manage your API keys for programmatic access",
+                "settings.apibtn": "Manage API Keys",
+                "settings.status": "System Status",
+                "settings.statuspage": "View Full Status Page",
+                "footer.terms": "Terms of Service",
+                "footer.privacy": "Privacy Policy",
+                "footer.support": "Support",
+                "footer.standard": "Enterprise Cloud Standard",
+                "footer.team": "STANY BOT TEAM"
+            },
+            sw: {
+                "auth.subtitle": "Fikia dashibodi yako ya usakinishaji wa boti kwa biashara",
+                "auth.signin": "INGIA",
+                "auth.create": "Unda Akaunti",
+                "nav.dashboard": "Dashibodi",
+                "nav.deploy": "Sakinisha Mpya",
+                "nav.shop": "Duka SQ",
+                "promo.deployfree": "SAKINUSHA BURE",
+                "dashboard.runningapps": "Programu Zinazoendeshwa",
+                "deploy.title": "Usakinishaji wa Wingu",
+                "deploy.launch": "Anzisha Programu",
+                "shop.title": "Duka la Tokeni za SQ",
+                "shop.order": "AGIZA SASA",
+                "referral.title": "Programu ya Marejeleo",
+                "profile.sync": "Sawazisha Profaili ya GitHub",
+                "settings.title": "Mipangilio ya Akaunti",
+                "footer.standard": "Kiwango cha Wingu cha Biashara"
+            },
+            fr: {
+                "auth.subtitle": "Accédez à votre tableau de bord de déploiement de bots professionnel",
+                "auth.signin": "SE CONNECTER",
+                "auth.create": "Créer un compte",
+                "nav.dashboard": "Tableau de bord",
+                "nav.deploy": "Nouveau déploiement",
+                "nav.shop": "Boutique SQ",
+                "promo.deployfree": "DÉPLOYER GRATUITEMENT",
+                "dashboard.runningapps": "Applications en cours",
+                "deploy.title": "Déploiement Cloud",
+                "deploy.launch": "Lancer l'application",
+                "shop.title": "Boutique de jetons SQ",
+                "shop.order": "COMMANDER",
+                "referral.title": "Programme de parrainage",
+                "profile.sync": "Synchroniser le profil GitHub",
+                "settings.title": "Paramètres du compte",
+                "footer.standard": "Standard Cloud Entreprise"
+            }
+        };
+        
+        function setLanguage(lang) {
+            // Update active state
+            document.querySelectorAll('.lang-option').forEach(el => el.classList.remove('active'));
+            document.querySelector(`.lang-option[data-lang="${lang}"]`)?.classList.add('active');
+            
+            // Apply translations
+            if (translations[lang]) {
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang][key]) {
+                        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                            el.placeholder = translations[lang][key];
+                        } else {
+                            el.innerHTML = translations[lang][key];
+                        }
+                    }
+                });
+            }
+            
+            // Save preference
+            localStorage.setItem('language', lang);
+            document.documentElement.setAttribute('lang', lang);
+            showToast(`Language changed to ${lang.toUpperCase()}`, 'success');
+        }
+        
+        // 🔔 Toast Notification System
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            const icons = {
+                success: 'fa-circle-check text-emerald-400',
+                error: 'fa-circle-exclamation text-red-400',
+                warning: 'fa-triangle-exclamation text-amber-400',
+                info: 'fa-circle-info text-blue-400'
+            };
+            
+            toast.innerHTML = `
+                <i class="fa-solid ${icons[type]} text-lg"></i>
+                <span class="text-sm font-medium">${message}</span>
+            `;
+            
+            container.appendChild(toast);
+            
+            // Auto-remove after animation
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+        
+        // 👁️ Password Visibility Toggle
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.nextElementSibling.querySelector('i');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+        
+        // 📋 Copy to Clipboard
+        function copyRef() {
+            const link = document.getElementById('ref-link');
+            navigator.clipboard.writeText(link.value).then(() => {
+                showToast('Referral link copied to clipboard!', 'success');
+            }).catch(() => {
+                showToast('Failed to copy link', 'error');
+            });
+        }
+        
+        // 🖼️ Profile Picture Upload Handler
+        function handleProfileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            // Validate file
+            if (!file.type.startsWith('image/')) {
+                showToast('Please select an image file', 'error');
+                return;
+            }
+            if (file.size > 5 * 1024 * 1024) {
+                showToast('Image must be less than 5MB', 'error');
+                return;
+            }
+            
+            // Show progress
+            const progress = document.getElementById('pfp-upload-progress');
+            progress.classList.remove('hidden');
+            
+            // Simulate upload (replace with actual Firebase Storage upload)
+            setTimeout(() => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    document.getElementById('user-pfp').src = e.target.result;
+                    progress.classList.add('hidden');
+                    showToast('Profile picture updated successfully!', 'success');
+                };
+                reader.readAsDataURL(file);
+            }, 1500);
+        }
+        
+        // 🎯 Initialize on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Load saved preferences
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+            
+            const savedLang = localStorage.getItem('language') || 'en';
+            setLanguage(savedLang);
+            
+            // Check for referral in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const ref = urlParams.get('ref');
+            if (ref && document.getElementById('auth-page').classList.contains('hidden') === false) {
+                isRegister = true;
+                toggleAuth();
+                document.getElementById('reg-ref').value = ref;
+                showToast('Referral code applied!', 'success');
+            }
+            
+            // Keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                // Ctrl+K or Cmd+K to focus search (future feature)
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    showToast('Search feature coming soon!', 'info');
+                }
+                // Escape to close modals (future)
+                if (e.key === 'Escape') {
+                    // Close any open modals
+                }
+            });
+            
+            // Form validation enhancements
+            const emailInput = document.getElementById('auth-email');
+            emailInput.addEventListener('blur', function() {
+                if (this.value && !this.validity.valid) {
+                    showToast('Please enter a valid email address', 'error');
+                }
+            });
+        });
+        
+        // 🧭 Tab Navigation System
+        window.showTab = function(id) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Deactivate all nav links
+            document.querySelectorAll('.sidebar-link').forEach(link => {
+                link.classList.remove('active');
+                link.removeAttribute('aria-current');
+            });
+            
+            // Show selected tab
+            const targetTab = document.getElementById('tab-' + id);
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+            
+            // Activate nav link
+            const activeLink = event?.currentTarget;
+            if (activeLink) {
+                activeLink.classList.add('active');
+                activeLink.setAttribute('aria-current', 'page');
+            }
+            
+            // Update header title
+            const titles = {
+                'dashboard': 'Dashboard',
+                'deploy': 'New Deployment',
+                'shop': 'SQ Token Store',
+                'referral': 'Referral Program',
+                'profile': 'My Profile',
+                'settings': 'Account Settings'
+            };
+            document.getElementById('tab-title').textContent = titles[id] || id;
+            
+            // Scroll to top on mobile
+            if (window.innerWidth < 1024) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        };
+        
+        // 🔐 Auth Toggle (Login/Register)
+        let isRegister = false;
+        window.toggleAuth = function() {
+            isRegister = !isRegister;
+            const title = document.getElementById('auth-title');
+            const btn = document.getElementById('main-auth-btn');
+            const registerOnly = document.getElementById('register-only');
+            const switchText = document.getElementById('switch-text');
+            const switchBtn = document.getElementById('switch-btn');
+            
+            if (isRegister) {
+                title.textContent = 'Create Account';
+                btn.innerHTML = `<span class="flex items-center justify-center gap-2"><i class="fa-solid fa-user-plus"></i> <span data-i18n="auth.register">REGISTER</span></span>`;
+                registerOnly.classList.remove('hidden');
+                switchText.textContent = 'Have an account?';
+                switchBtn.innerHTML = '<span data-i18n="auth.login">Login</span>';
+            } else {
+                title.textContent = 'Welcome Back';
+                btn.innerHTML = `<span class="flex items-center justify-center gap-2"><i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="auth.signin">SIGN IN</span></span>`;
+                registerOnly.classList.add('hidden');
+                switchText.textContent = 'New here?';
+                switchBtn.innerHTML = '<span data-i18n="auth.create">Create Account</span>';
+            }
+        };
+        
+        // Placeholder auth functions (integrate with your Firebase)
+        window.handleAuth = function() {
+            const email = document.getElementById('auth-email').value;
+            const pass = document.getElementById('auth-pass').value;
+            
+            if (!email || !pass) {
+                showToast('Email and password are required', 'error');
+                return;
+            }
+            
+            // Show loading state
+            const btn = document.getElementById('main-auth-btn');
+            const originalContent = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = `<span class="flex items-center justify-center gap-2"><div class="loader w-4 h-4 border-2"></div> Processing...</span>`;
+            
+            // Simulate auth delay (replace with actual Firebase)
+            setTimeout(() => {
+                // Success simulation
+                document.getElementById('preloader').classList.add('hidden');
+                document.getElementById('auth-page').classList.add('hidden');
+                document.getElementById('app-container').classList.remove('hidden');
+                
+                // Update UI with mock user data
+                document.getElementById('nav-uid').textContent = 'usr_' + Math.random().toString(36).substr(2, 8);
+                document.getElementById('sq-balance').textContent = '10 SQ';
+                document.getElementById('sq-balance-mini').textContent = '10 SQ';
+                document.getElementById('user-display-name').textContent = 'Stany';
+                document.getElementById('user-email').textContent = email;
+                document.getElementById('ref-count').textContent = '0';
+                document.getElementById('ref-earn').textContent = '+0 SQ';
+                document.getElementById('ref-link').value = `${window.location.origin}${window.location.pathname}?ref=STANY${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
+                document.getElementById('member-since').textContent = new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+                document.getElementById('last-login').textContent = 'Just now';
+                
+                showToast('Welcome back, Stany!', 'success');
+                
+                // Reset button
+                btn.disabled = false;
+                btn.innerHTML = originalContent;
+            }, 1500);
+        };
+        
+        window.loginWithGithub = function() {
+            showToast('GitHub authentication would open here', 'info');
+            // Implement with: signInWithPopup(auth, new GithubAuthProvider())
+        };
+        
+        window.userLogout = function() {
+            if (confirm('Are you sure you want to sign out?')) {
+                showToast('Signed out successfully', 'success');
+                setTimeout(() => {
+                    location.reload();
+                }, 1000);
+            }
+        };
+        
+        // 🚀 Deployment Functions
+        window.fetchAppJson = function() {
+            const url = document.getElementById('repo-url').value;
+            if (!url.includes('github.com')) {
+                showToast('Please enter a valid GitHub repository URL', 'error');
+                return;
+            }
+            
+            // Show loading
+            const btn = event.target.closest('button');
+            const originalContent = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = `<span class="flex items-center justify-center gap-2"><div class="loader w-4 h-4 border-2"></div> Parsing...</span>`;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Mock successful parse
+                document.getElementById('env-area').classList.remove('hidden');
+                document.getElementById('env-inputs').innerHTML = `
+                    <div>
+                        <label class="text-[9px] font-bold text-slate-400 uppercase ml-1 mb-1 block">SESSION_ID</label>
+                        <input type="text" data-key="SESSION_ID" placeholder="Your WhatsApp session ID" 
+                               class="env-val w-full px-4 py-3 rounded-xl outline-none border border-slate-700 focus:border-blue-500 text-sm font-mono">
+                    </div>
+                    <div>
+                        <label class="text-[9px] font-bold text-slate-400 uppercase ml-1 mb-1 block">PREFIX</label>
+                        <input type="text" data-key="PREFIX" value="." placeholder="Command prefix" 
+                               class="env-val w-full px-4 py-3 rounded-xl outline-none border border-slate-700 focus:border-blue-500 text-sm font-mono">
+                    </div>
+                    <div>
+                        <label class="text-[9px] font-bold text-slate-400 uppercase ml-1 mb-1 block">OWNER_NUMBER</label>
+                        <input type="text" data-key="OWNER_NUMBER" placeholder="+255XXXXXXXXX" 
+                               class="env-val w-full px-4 py-3 rounded-xl outline-none border border-slate-700 focus:border-blue-500 text-sm font-mono">
+                    </div>
+                `;
+                showToast('app.json parsed successfully! Configure your variables below.', 'success');
+                btn.disabled = false;
+                btn.innerHTML = originalContent;
+            }, 1200);
+        };
+        
+        window.confirmDeploy = function() {
+            if (confirm('Deploy this application? This will cost 5 SQ tokens.')) {
+                showToast('Deployment started! Check Dashboard for status.', 'success');
+                // In production: call Firebase to create app document
+                setTimeout(() => {
+                    showTab('dashboard');
+                }, 1500);
+            }
+        };
+        
+        window.deployFreeLegend = function() {
+            if (confirm('Deploy iamlegendv2.1 for free? This is a one-time offer.')) {
+                showToast('iamlegendv2.1 deployment initiated!', 'success');
+                // In production: create app with special flag
+                setTimeout(() => {
+                    showTab('dashboard');
+                }, 1500);
+            }
+        };
+        
+        // 🛒 Shop Functions
+        window.buySQ = function(qty, price, duration) {
+            const user = document.getElementById('user-display-name').textContent || 'User';
+            const message = `🤖 STANY BOT ORDER\n\n👤 User: ${user}\n📦 Package: ${qty} SQ Tokens (${duration})\n💰 Price: TZS ${price}/=\n\nPlease confirm your payment via WhatsApp.`;
+            
+            // Use your actual WhatsApp number
+            const whatsappNumber = '255787069580'; // Your number from memories
+            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            
+            window.open(url, '_blank', 'noopener,noreferrer');
+            showToast('Redirecting to WhatsApp to complete your order...', 'info');
+        };
+        
+        // ♻️ App Management
+        window.deleteApp = function(appId) {
+            if (confirm('⚠️ This will permanently delete this application. Continue?')) {
+                showToast('Application deleted successfully', 'success');
+                // In production: deleteDoc(doc(db, "apps", appId))
+            }
+        };
+        
+        window.editApp = function(appId) {
+            const key = prompt('Environment Variable Key (e.g., SESSION_ID):');
+            if (!key) return;
+            
+            const val = prompt(`New value for ${key}:`);
+            if (val !== null) {
+                showToast(`✓ ${key} updated successfully`, 'success');
+                // In production: updateDoc(doc(db, "apps", appId), { [`env.${key}`]: val })
+            }
+        };
+        
+        // 🎨 Custom Scrollbar for env inputs
+        const style = document.createElement('style');
+        style.textContent = `
+            .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+            .custom-scrollbar::-webkit-scrollbar-track { background: rgba(30, 41, 59, 0.5); border-radius: 10px; }
+            .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.5); border-radius: 10px; }
+            .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(59, 130, 246, 0.7); }
+            .toggle-checkbox { 
+                width: 40px; height: 22px; background: #334155; border-radius: 9999px; 
+                position: relative; appearance: none; cursor: pointer; transition: background 0.2s;
+            }
+            .toggle-checkbox:checked { background: #3b82f6; }
+            .toggle-checkbox::after {
+                content: ''; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px;
+                background: white; border-radius: 50%; transition: transform 0.2s;
+            }
+            .toggle-checkbox:checked::after { transform: translateX(18px); }
+        `;
+        document.head.appendChild(style);
+    </script>
+    
+    <!-- 🧩 Firebase SDK (Production Ready) -->
+    <script type="module">
+        // ⚠️ IMPORTANT: In production, use environment variables for config
+        // This is a placeholder - replace with your actual Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyAGQqAiYCnWR7X8XkxEXCGu19PU45qXDnc",
+            authDomain: "stanyappstore.firebaseapp.com",
+            projectId: "stanyappstore",
+            storageBucket: "stanyappstore.firebasestorage.app",
+            messagingSenderId: "735017831251",
+            appId: "1:735017831251:web:9fa4184ef141349fb9afa6",
+            measurementId: "G-EM3RTMBKTN"
+        };
+        
+        // Lazy load Firebase only when needed (performance optimization)
+        let firebaseLoaded = false;
+        let auth, db;
+        
+        async function loadFirebase() {
+            if (firebaseLoaded) return { auth, db };
+            
+            const [
+                { initializeApp },
+                { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, 
+                  signInWithPopup, GithubAuthProvider, onAuthStateChanged, signOut, updateProfile },
+                { getFirestore, doc, getDoc, setDoc, updateDoc, increment, collection, 
+                  query, where, getDocs, onSnapshot, addDoc, deleteDoc, serverTimestamp }
+            ] = await Promise.all([
+                import("https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"),
+                import("https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"),
+                import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js")
+            ]);
+            
+            const app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            db = getFirestore(app);
+            firebaseLoaded = true;
+            
+            return { auth, db, signInWithEmailAndPassword, createUserWithEmailAndPassword, 
+                    signInWithPopup, GithubAuthProvider, onAuthStateChanged, signOut, updateProfile,
+                    doc, getDoc, setDoc, updateDoc, increment, collection, query, where, getDocs, 
+                    onSnapshot, addDoc, deleteDoc, serverTimestamp };
+        }
+        
+        // Export for global use (replace placeholder functions)
+        window.loadFirebase = loadFirebase;
+    </script>
+    
+    <!-- 🚀 PWA Manifest (Installable App) -->
+    <link rel="manifest" href="data:application/manifest+json,{
+        \"name\": \"STANY BOT HOSTING\",
+        \"short_name\": \"StanyHost\",
+        \"start_url\": \"/\",
+        \"display\": \"standalone\",
+        \"background_color\": \"#020617\",
+        \"theme_color\": \"#020617\",
+        \"icons\": [{
+            \"src\": \"https://raw.githubusercontent.com/stanytz378/stanyimagesservers/refs/heads/main/705D6C77-3C37-4294-A509-3C2B9C4A34D2.png\",
+            \"sizes\": \"192x192\",
+            \"type\": \"image/png\"
+        }]
+    }">
+    
+    <!-- 📱 Mobile Optimization -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Stany Host">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/stanytz378/stanyimagesservers/refs/heads/main/705D6C77-3C37-4294-A509-3C2B9C4A34D2.png">
+</body>
+</html>
+
