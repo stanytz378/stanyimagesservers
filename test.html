@@ -1,980 +1,458 @@
-
-                        <!DOCTYPE html>
-                        <html lang="en">
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <style>
-                body {
-                  background-color: white; /* Ensure the iframe has a white background */
-                }
-
-                
-              </style>
-                        </head>
-                        <body>
-                            <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
-    <!-- 🔐 Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://*.firebaseio.com wss://*.firebaseio.com;">
-    <meta name="robots" content="noindex, nofollow">
-    
-    <title>🛡️ STANY ADMIN | Enterprise Command Center</title>
-    <meta name="description" content="Secure administrative dashboard for STANY BOT HOSTING platform management">
-    
-    <!-- 🎨 CSS Frameworks -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>STANY BOT HOSTING – Deploy Your WhatsApp Bot</title>
+    <!-- Meta Tags for Sharing -->
+    <meta property="og:title" content="STANY BOT HOSTING">
+    <meta property="og:description" content="Deploy your WhatsApp bot instantly with our easy dashboard. Get 10 free SQ on signup!">
+    <meta property="og:image" content="https://stanyappstore.web.app/logo.png">
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN (for quick styling) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- ⚙️ Tailwind Config -->
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
-                    colors: {
-                        admin: { bg: '#020617', card: '#0f172a', border: '#1e293b', accent: '#3b82f6' },
-                        danger: '#ef4444', warning: '#f59e0b', success: '#10b981'
-                    },
-                    animation: { 'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite' }
-                }
-            }
-        }
-    </script>
-
     <style>
-        :root {
-            --glass: rgba(15, 23, 42, 0.85);
-            --border: rgba(255, 255, 255, 0.08);
-            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
-        }
-        * { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
-            color: #f8fafc; 
-            min-height: 100vh;
-        }
-        
-        /* 🔐 Lock Screen */
-        .lock-screen {
-            background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
-        }
-        
-        /* ✨ Glass Cards */
-        .admin-card { 
-            background: var(--glass); 
-            backdrop-filter: blur(20px); 
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-        .admin-card:hover { border-color: rgba(59, 130, 246, 0.4); transform: translateY(-2px); }
-        
-        /* 📊 Stats Cards */
-        .stat-card { 
-            position: relative; 
-            overflow: hidden; 
-        }
-        .stat-card::after {
-            content: ''; position: absolute; top: -50%; right: -50%;
-            width: 200px; height: 200px;
-            background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);
-            border-radius: 50%; pointer-events: none;
-        }
-        
-        /* 🔄 Loading States */
-        .loader { 
-            border: 3px solid rgba(30, 41, 59, 0.5); 
-            border-top-color: #3b82f6; 
-            border-radius: 50%;
-            animation: spin 0.9s linear infinite; 
-        }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        
-        /* 🔔 Toast Notifications */
-        #toast-container {
-            position: fixed; top: 20px; right: 20px; z-index: 9999;
-            display: flex; flex-direction: column; gap: 12px; max-width: 400px;
-        }
-        .toast {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
-            border: 1px solid var(--border); border-left: 4px solid #3b82f6;
-            border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 12px;
-            box-shadow: var(--shadow); animation: slideIn 0.3s ease, fadeOut 0.3s ease 3s forwards;
-            backdrop-filter: blur(12px);
-        }
-        .toast.success { border-left-color: #10b981; }
-        .toast.error { border-left-color: #ef4444; }
-        .toast.warning { border-left-color: #f59e0b; }
-        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        @keyframes fadeOut { to { opacity: 0; transform: translateX(20px); } }
-        
-        /* 📋 Table Styles */
-        .admin-table th { 
-            background: rgba(30, 41, 59, 0.6); 
-            position: sticky; top: 0; 
-            z-index: 10; 
-            backdrop-filter: blur(10px);
-        }
-        .admin-table tr:hover { background: rgba(59, 130, 246, 0.08); }
-        .admin-table td { transition: background 0.2s; }
-        
-        /* 🎯 Action Buttons */
-        .action-btn { 
-            padding: 6px 14px; border-radius: 10px; font-weight: 600; font-size: 0.75rem;
-            transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px;
-        }
-        .action-btn.primary { background: #3b82f6; color: white; }
-        .action-btn.primary:hover { background: #2563eb; transform: scale(1.05); }
-        .action-btn.danger { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
-        .action-btn.danger:hover { background: rgba(239, 68, 68, 0.25); }
-        .action-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
-        
-        /* ♿ Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-        }
-        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-        
-        /* 📱 Responsive */
-        @media (max-width: 768px) {
-            .admin-table thead { display: none; }
-            .admin-table tr { display: block; margin-bottom: 16px; border: 1px solid var(--border); border-radius: 16px; padding: 16px; }
-            .admin-table td { display: flex; justify-content: space-between; padding: 8px 0; border: none; }
-            .admin-table td::before { content: attr(data-label); font-weight: 600; color: #94a3b8; }
-        }
+        * { font-family: 'Inter', sans-serif; }
+        body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); min-height: 100vh; }
+        .glass-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); }
+        .btn-primary { background: linear-gradient(135deg, #3b82f6, #2563eb); transition: all 0.2s; }
+        .btn-primary:hover { transform: scale(1.02); box-shadow: 0 10px 20px -10px #3b82f6; }
+        .btn-secondary { background: rgba(255,255,255,0.1); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+        .sq-badge { background: #f59e0b; color: #1e293b; font-weight: bold; }
+        .referral-link { background: #1e293b; border: 1px solid #3b82f6; border-radius: 12px; padding: 8px 12px; font-size: 0.9rem; word-break: break-all; }
+        /* Disable right-click */
+        body { user-select: none; }
     </style>
 </head>
-<body class="antialiased">
-
-    <!-- 🔔 Toast Container -->
-    <div id="toast-container" aria-live="polite"></div>
-
-    <!-- 🔐 Secure Login Lock Screen -->
-    <div id="admin-lock" class="lock-screen fixed inset-0 flex flex-col items-center justify-center p-6 text-center z-[100] transition-opacity duration-500">
-        <!-- Decorative Background -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s"></div>
-        </div>
-        
-        <div class="relative z-10 max-w-md w-full">
-            <!-- Logo & Header -->
-            <div class="mb-10">
-                <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-600/20 to-violet-600/20 mb-6 border border-blue-500/30">
-                    <i class="fa-solid fa-shield-halved text-3xl text-blue-400"></i>
-                </div>
-                <h1 class="text-3xl md:text-4xl font-black mb-3 gradient-text">ADMIN ACCESS</h1>
-                <p class="text-slate-400 text-sm">Enterprise Command Center • Authorized Personnel Only</p>
+<body class="text-gray-200">
+    <div id="app" class="container mx-auto px-4 py-6 max-w-6xl">
+        <!-- Navigation -->
+        <nav class="flex justify-between items-center mb-8 glass-card p-4 rounded-2xl">
+            <div class="flex items-center gap-3">
+                <i class="fas fa-robot text-3xl text-blue-400"></i>
+                <span class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">STANY BOT HOSTING</span>
             </div>
-            
-            <!-- Login Form -->
-            <form id="login-form" class="space-y-5" onsubmit="event.preventDefault(); handleAdminLogin();">
-                <div>
-                    <label for="ad-email" class="sr-only">Admin Email</label>
-                    <div class="relative">
-                        <input id="ad-email" type="email" placeholder="admin@stany-hosting.com" 
-                               class="w-full bg-slate-900/80 border border-slate-700 pl-12 pr-4 py-4 rounded-xl outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
-                               autocomplete="username" required>
-                        <i class="fa-solid fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"></i>
-                    </div>
+            <div id="userMenu" class="flex items-center gap-4">
+                <div id="authButtons" class="flex gap-3">
+                    <button onclick="showAuthModal('login')" class="btn-secondary px-4 py-2 rounded-xl"><i class="fas fa-sign-in-alt mr-2"></i>Login</button>
+                    <button onclick="showAuthModal('signup')" class="btn-primary px-4 py-2 rounded-xl"><i class="fas fa-user-plus mr-2"></i>Sign Up</button>
                 </div>
-                
-                <div>
-                    <label for="ad-pass" class="sr-only">Admin Password</label>
-                    <div class="relative">
-                        <input id="ad-pass" type="password" placeholder="••••••••••••" 
-                               class="w-full bg-slate-900/80 border border-slate-700 pl-12 pr-12 py-4 rounded-xl outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
-                               autocomplete="current-password" required minlength="8">
-                        <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"></i>
-                        <button type="button" onclick="togglePassword('ad-pass')" 
-                                class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white transition-colors"
-                                aria-label="Toggle password visibility">
-                            <i class="fa-solid fa-eye"></i>
-                        </button>
-                    </div>
+                <div id="userInfo" class="hidden flex items-center gap-4">
+                    <img id="profilePic" class="w-10 h-10 rounded-full object-cover border-2 border-blue-400" alt="Profile">
+                    <span id="displayName" class="font-medium"></span>
+                    <span id="sqBalance" class="sq-badge px-3 py-1 rounded-full text-sm"><i class="fas fa-gem mr-1"></i><span id="sqCount">0</span> SQ</span>
+                    <button onclick="logout()" class="btn-secondary px-3 py-1 rounded-xl text-sm"><i class="fas fa-sign-out-alt"></i></button>
                 </div>
-                
-                <!-- 2FA Placeholder -->
-                <div class="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-start gap-3">
-                    <i class="fa-solid fa-shield-check text-amber-400 mt-0.5"></i>
-                    <p class="text-xs text-amber-200">
-                        <strong class="text-white">Security Notice:</strong> After login, 2FA verification will be required for sensitive actions.
-                    </p>
+            </div>
+        </nav>
+
+        <!-- Main Content (visible after login) -->
+        <div id="mainContent" class="hidden">
+            <!-- Dashboard Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="glass-card p-6 rounded-2xl">
+                    <i class="fas fa-gem text-3xl text-yellow-400 mb-3"></i>
+                    <h3 class="text-xl font-bold">SQ Tokens</h3>
+                    <p class="text-3xl font-bold mt-2"><span id="dashboardSQ">0</span></p>
+                    <p class="text-sm text-gray-400 mt-1">Each deployment costs 5 SQ</p>
+                    <button onclick="openPackageModal()" class="btn-primary w-full mt-4 py-2 rounded-xl"><i class="fas fa-shopping-cart mr-2"></i>Buy SQ</button>
                 </div>
-                
-                <button id="btn-ad-login" type="submit" 
-                        class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 py-4 rounded-xl font-black tracking-wide transition-all shadow-lg shadow-blue-600/25 active:scale-[0.98] flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-right-to-bracket"></i>
-                    <span>UNLOCK COMMAND CENTER</span>
-                </button>
-            </form>
-            
-            <!-- Security Footer -->
-            <div class="mt-10 pt-6 border-t border-slate-800/50 text-center">
-                <p class="text-[10px] text-slate-500 uppercase tracking-wider">
-                    <i class="fa-solid fa-lock mr-1"></i>
-                    All access attempts are logged and monitored
-                </p>
-                <p class="text-[10px] text-slate-600 mt-2">
-                    IP: <span id="client-ip" class="font-mono">Loading...</span> • 
-                    Time: <span id="login-time" class="font-mono">--:--</span>
-                </p>
+                <div class="glass-card p-6 rounded-2xl">
+                    <i class="fas fa-code-branch text-3xl text-green-400 mb-3"></i>
+                    <h3 class="text-xl font-bold">Deploy Bot</h3>
+                    <p class="text-sm text-gray-400 mt-1">Choose your bot template</p>
+                    <select id="botRepoSelect" class="w-full mt-3 bg-gray-800 border border-gray-700 rounded-xl p-2">
+                        <option value="https://github.com/stanytz378/iamlegendv2.1">ᴵ ᴬᴹ ᴸᴱᴳᴱᴺᴰ v2.1 (Recommended)</option>
+                        <!-- other repos can be added by admin -->
+                    </select>
+                    <input type="text" id="botName" placeholder="Bot name (e.g., MyAwesomeBot)" class="w-full mt-3 bg-gray-800 border border-gray-700 rounded-xl p-2">
+                    <button onclick="deployBot()" id="deployBtn" class="btn-primary w-full mt-4 py-2 rounded-xl"><i class="fas fa-rocket mr-2"></i>Deploy (5 SQ)</button>
+                </div>
+                <div class="glass-card p-6 rounded-2xl">
+                    <i class="fas fa-users text-3xl text-purple-400 mb-3"></i>
+                    <h3 class="text-xl font-bold">Referral Program</h3>
+                    <p class="text-sm text-gray-400">Earn 3 SQ for each new user via your link</p>
+                    <div class="referral-link mt-3 text-sm" id="referralLink">Loading...</div>
+                    <button onclick="copyReferralLink()" class="btn-secondary w-full mt-3 py-1 rounded-xl text-sm"><i class="fas fa-copy mr-1"></i>Copy Link</button>
+                    <div class="mt-3 text-sm">Total referrals: <span id="referralCount">0</span></div>
+                </div>
+            </div>
+
+            <!-- Deployments List -->
+            <div class="glass-card p-6 rounded-2xl">
+                <h2 class="text-2xl font-bold mb-4"><i class="fas fa-server mr-2"></i>Your Deployments</h2>
+                <div id="deploymentsList" class="space-y-3">
+                    <div class="text-center text-gray-400 py-8">Loading deployments...</div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- 🎛️ Main Admin Dashboard -->
-    <div id="admin-main" class="hidden min-h-screen">
-        
-        <!-- Top Navigation -->
-        <header class="sticky top-0 z-50 glass border-b border-slate-800/50 px-6 py-4">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center">
-                        <i class="fa-solid fa-crown text-white"></i>
-                    </div>
-                    <div>
-                        <h1 class="text-xl font-black gradient-text">STANY ADMIN HQ</h1>
-                        <p class="text-xs text-slate-400">Enterprise Management Console</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-center gap-3">
-                    <!-- Admin Info -->
-                    <div class="hidden md:flex items-center gap-3 px-4 py-2 glass rounded-xl">
-                        <div class="w-8 h-8 rounded-full bg-blue-600/20 flex items-center justify-center">
-                            <i class="fa-solid fa-user-shield text-blue-400 text-sm"></i>
-                        </div>
-                        <div class="text-right">
-                            <p id="admin-email" class="text-sm font-bold">admin@...</p>
-                            <p class="text-[10px] text-emerald-400 flex items-center gap-1">
-                                <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>
-                                Verified Admin
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <!-- Action Buttons -->
-                    <button onclick="refreshData()" class="p-3 glass rounded-xl hover:bg-white/10 transition-colors" title="Refresh Data" aria-label="Refresh dashboard">
-                        <i class="fa-solid fa-rotate"></i>
-                    </button>
-                    <button onclick="exportData()" class="p-3 glass rounded-xl hover:bg-white/10 transition-colors" title="Export Data" aria-label="Export data">
-                        <i class="fa-solid fa-download"></i>
-                    </button>
-                    <button onclick="logout()" class="p-3 glass rounded-xl hover:bg-red-500/20 transition-colors text-red-400 hover:text-red-300" title="Logout" aria-label="Sign out">
-                        <i class="fa-solid fa-power-off"></i>
-                    </button>
-                </div>
-            </div>
-        </header>
-
-        <!-- Main Content -->
-        <main class="p-4 md:p-8 space-y-8">
-            
-            <!-- 📊 Stats Overview -->
-            <section>
-                <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
-                    <i class="fa-solid fa-chart-simple text-blue-400"></i>
-                    Platform Overview
-                </h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <!-- Total Users -->
-                    <div class="admin-card stat-card p-6 rounded-2xl">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-blue-500/15 flex items-center justify-center">
-                                <i class="fa-solid fa-users text-blue-400 text-xl"></i>
-                            </div>
-                            <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">+12%</span>
-                        </div>
-                        <p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Total Users</p>
-                        <p id="st-users" class="text-3xl font-black">--</p>
-                        <p class="text-[10px] text-slate-500 mt-2">Active in last 30 days</p>
-                    </div>
-                    
-                    <!-- Global Bots -->
-                    <div class="admin-card stat-card p-6 rounded-2xl">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-violet-500/15 flex items-center justify-center">
-                                <i class="fa-solid fa-robot text-violet-400 text-xl"></i>
-                            </div>
-                            <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">+8%</span>
-                        </div>
-                        <p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Deployed Bots</p>
-                        <p id="st-bots" class="text-3xl font-black text-violet-400">--</p>
-                        <p class="text-[10px] text-slate-500 mt-2">Across 12 regions</p>
-                    </div>
-                    
-                    <!-- Total SQ -->
-                    <div class="admin-card stat-card p-6 rounded-2xl">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-amber-500/15 flex items-center justify-center">
-                                <i class="fa-solid fa-coins text-amber-400 text-xl"></i>
-                            </div>
-                            <span class="text-xs font-bold text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full">In Circulation</span>
-                        </div>
-                        <p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Total SQ Tokens</p>
-                        <p id="st-sq" class="text-3xl font-black text-amber-400">--</p>
-                        <p class="text-[10px] text-slate-500 mt-2">Platform currency</p>
-                    </div>
-                    
-                    <!-- Revenue (Placeholder) -->
-                    <div class="admin-card stat-card p-6 rounded-2xl">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-emerald-500/15 flex items-center justify-center">
-                                <i class="fa-solid fa-chart-line text-emerald-400 text-xl"></i>
-                            </div>
-                            <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">This Month</span>
-                        </div>
-                        <p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Revenue (TZS)</p>
-                        <p class="text-3xl font-black text-emerald-400">--</p>
-                        <p class="text-[10px] text-slate-500 mt-2">From SQ purchases</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 🔍 Search & Filters -->
-            <section class="admin-card p-4 md:p-6 rounded-2xl">
-                <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-                    <div class="relative flex-1 max-w-md">
-                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"></i>
-                        <input type="search" id="user-search" placeholder="Search users by name, email, or ID..." 
-                               class="w-full bg-slate-900/50 border border-slate-700 pl-11 pr-4 py-3 rounded-xl outline-none focus:border-blue-500 transition-all text-sm"
-                               oninput="filterUsers(this.value)">
-                    </div>
-                    <div class="flex gap-2">
-                        <select id="sort-by" class="bg-slate-900/50 border border-slate-700 px-4 py-3 rounded-xl outline-none focus:border-blue-500 text-sm" onchange="sortUsers()">
-                            <option value="recent">Sort: Recent</option>
-                            <option value="balance">Sort: Balance (High)</option>
-                            <option value="alpha">Sort: A-Z</option>
-                        </select>
-                        <button onclick="toggleView()" class="p-3 glass rounded-xl hover:bg-white/10 transition-colors" title="Toggle View">
-                            <i class="fa-solid fa-table-columns"></i>
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 👥 Users Management Table -->
-            <section class="admin-card rounded-2xl overflow-hidden">
-                <div class="p-4 md:p-6 border-b border-slate-800/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                    <h2 class="text-lg font-bold flex items-center gap-2">
-                        <i class="fa-solid fa-users-gear text-blue-400"></i>
-                        User Management
-                    </h2>
-                    <div class="flex items-center gap-2 text-sm text-slate-400">
-                        <span id="user-count">0 users</span>
-                        <span>•</span>
-                        <span id="last-update">Updated: --</span>
-                    </div>
-                </div>
-                
-                <div class="overflow-x-auto">
-                    <table class="admin-table w-full text-left text-sm">
-                        <thead>
-                            <tr class="text-slate-400 text-xs uppercase tracking-wider">
-                                <th class="p-4 md:p-6 font-semibold">User</th>
-                                <th class="p-4 md:p-6 font-semibold">Email</th>
-                                <th class="p-4 md:p-6 font-semibold text-center">SQ Balance</th>
-                                <th class="p-4 md:p-6 font-semibold text-center">Status</th>
-                                <th class="p-4 md:p-6 font-semibold text-right">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="user-rows" class="divide-y divide-slate-800/50">
-                            <!-- Dynamic rows -->
-                            <tr>
-                                <td colspan="5" class="p-8 text-center text-slate-500">
-                                    <div class="flex flex-col items-center gap-4">
-                                        <div class="loader w-8 h-8"></div>
-                                        <p>Loading user data...</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <!-- Pagination (Placeholder) -->
-                <div class="p-4 border-t border-slate-800/50 flex justify-between items-center text-sm">
-                    <span class="text-slate-400">Showing <span id="showing-count">0</span> users</span>
-                    <div class="flex gap-1">
-                        <button class="px-3 py-1.5 glass rounded-lg disabled:opacity-50" disabled>← Prev</button>
-                        <button class="px-3 py-1.5 glass rounded-lg bg-blue-600 text-white">1</button>
-                        <button class="px-3 py-1.5 glass rounded-lg disabled:opacity-50" disabled>Next →</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ⚙️ Quick Actions Panel -->
-            <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <!-- Add SQ Modal Trigger -->
-                <div class="admin-card p-6 rounded-2xl">
-                    <h3 class="font-bold mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-coins text-amber-400"></i>
-                        Quick SQ Management
-                    </h3>
-                    <div class="space-y-4">
-                        <div class="flex gap-3">
-                            <input type="text" id="bulk-user-id" placeholder="User ID or Email" 
-                                   class="flex-1 bg-slate-900/50 border border-slate-700 px-4 py-3 rounded-xl outline-none focus:border-blue-500 text-sm">
-                            <input type="number" id="bulk-sq-amount" placeholder="SQ Amount" min="1"
-                                   class="w-32 bg-slate-900/50 border border-slate-700 px-4 py-3 rounded-xl outline-none focus:border-blue-500 text-sm">
-                        </div>
-                        <button onclick="bulkAddSQ()" class="w-full bg-blue-600 hover:bg-blue-500 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-plus"></i> Add SQ to User
-                        </button>
-                        <p class="text-[10px] text-slate-500 text-center">
-                            <i class="fa-solid fa-triangle-exclamation mr-1"></i>
-                            All transactions are logged. Use responsibly.
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- System Status -->
-                <div class="admin-card p-6 rounded-2xl">
-                    <h3 class="font-bold mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-heart-pulse text-emerald-400"></i>
-                        System Health
-                    </h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center justify-between">
-                            <span class="text-slate-400 text-sm">Firebase Connection</span>
-                            <span class="flex items-center gap-2 text-emerald-400 text-sm font-medium">
-                                <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-                                Connected
-                            </span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-slate-400 text-sm">Database Latency</span>
-                            <span class="text-slate-300 text-sm font-mono">~45ms</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-slate-400 text-sm">Active Sessions</span>
-                            <span class="text-slate-300 text-sm font-medium" id="active-sessions">1</span>
-                        </div>
-                        <div class="pt-4 border-t border-slate-800/50">
-                            <button onclick="runMaintenance()" class="w-full glass hover:bg-white/5 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-amber-400">
-                                <i class="fa-solid fa-screwdriver-wrench"></i> Run Maintenance Check
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 📋 Audit Log (Collapsible) -->
-            <section class="admin-card rounded-2xl overflow-hidden">
-                <button onclick="toggleAudit()" class="w-full p-4 md:p-6 flex items-center justify-between hover:bg-white/5 transition-colors">
-                    <h3 class="font-bold flex items-center gap-2">
-                        <i class="fa-solid fa-clipboard-list text-violet-400"></i>
-                        Recent Activity Log
-                    </h3>
-                    <i id="audit-toggle-icon" class="fa-solid fa-chevron-down text-slate-500 transition-transform"></i>
-                </button>
-                <div id="audit-panel" class="hidden border-t border-slate-800/50 p-4 md:p-6 space-y-3 max-h-64 overflow-y-auto">
-                    <!-- Dynamic log entries -->
-                    <div class="text-sm text-slate-400 text-center py-4">No recent activity to display</div>
-                </div>
-            </section>
-        </main>
 
         <!-- Footer -->
-        <footer class="p-6 text-center text-xs text-slate-500 border-t border-slate-800/50">
-            <p>🛡️ STANY ADMIN PANEL • Enterprise Edition • <span id="admin-year">2025</span></p>
-            <p class="mt-1 text-[10px]">All administrative actions are logged and auditable • Session expires after 30min inactivity</p>
+        <footer class="mt-12 text-center text-gray-500 text-sm border-t border-gray-800 pt-6">
+            © 2025 STANY BOT HOSTING – All rights reserved.
         </footer>
     </div>
 
-    <!-- 🔧 JavaScript Functionality -->
-    <script>
-        // 🎨 Gradient Text Animation
-        const style = document.createElement('style');
-        style.textContent = `
-            .gradient-text {
-                background: linear-gradient(90deg, #60a5fa, #a78bfa, #60a5fa);
-                background-size: 200% auto;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                animation: gradientShift 4s linear infinite;
-            }
-            @keyframes gradientShift {
-                0% { background-position: 0% 50%; }
-                50% { background-position: 100% 50%; }
-                100% { background-position: 0% 50%; }
-            }
-            /* Custom scrollbar for audit panel */
-            #audit-panel::-webkit-scrollbar { width: 6px; }
-            #audit-panel::-webkit-scrollbar-track { background: rgba(30, 41, 59, 0.5); border-radius: 10px; }
-            #audit-panel::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.5); border-radius: 10px; }
-        `;
-        document.head.appendChild(style);
+    <!-- Modals (Auth, Package) -->
+    <div id="authModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center hidden z-50">
+        <div class="bg-gray-900 rounded-2xl p-6 w-96 max-w-full">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold" id="modalTitle">Login</h3>
+                <button onclick="closeAuthModal()" class="text-gray-400 hover:text-white"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="authForm">
+                <!-- Form content dynamically inserted -->
+            </div>
+            <div class="mt-4 text-center">
+                <button onclick="loginWithGitHub()" class="btn-secondary w-full py-2 rounded-xl"><i class="fab fa-github mr-2"></i>Continue with GitHub</button>
+            </div>
+        </div>
+    </div>
 
-        // 🔔 Toast Notification System
-        function showToast(message, type = 'info') {
-            const container = document.getElementById('toast-container');
-            const toast = document.createElement('div');
-            toast.className = `toast ${type}`;
-            
-            const icons = {
-                success: 'fa-circle-check text-emerald-400',
-                error: 'fa-circle-exclamation text-red-400', 
-                warning: 'fa-triangle-exclamation text-amber-400',
-                info: 'fa-circle-info text-blue-400'
-            };
-            
-            toast.innerHTML = `<i class="fa-solid ${icons[type]} text-lg"></i><span class="text-sm font-medium">${message}</span>`;
-            container.appendChild(toast);
-            setTimeout(() => toast.remove(), 3300);
-        }
-
-        // 👁️ Password Toggle
-        function togglePassword(id) {
-            const input = document.getElementById(id);
-            const icon = input.nextElementSibling.querySelector('i');
-            input.type = input.type === 'password' ? 'text' : 'password';
-            icon.className = input.type === 'password' ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash';
-        }
-
-        // 🔐 Admin Login Handler (SECURE VERSION)
-        async function handleAdminLogin() {
-            const email = document.getElementById('ad-email').value.trim();
-            const pass = document.getElementById('ad-pass').value;
-            const btn = document.getElementById('btn-ad-login');
-            
-            // ⚠️ SECURITY: In production, NEVER hardcode credentials!
-            // Use Firebase Authentication with custom claims for admin roles
-            const VALID_ADMIN_EMAIL = "admin@stany-hosting.com"; // Replace with env variable
-            
-            if (!email || !pass) {
-                showToast('Please enter email and password', 'error');
-                return;
-            }
-            
-            if (email !== VALID_ADMIN_EMAIL) {
-                // Log failed attempt (in production, send to security service)
-                console.warn(`Failed login attempt from: ${email}`);
-                showToast('Access denied. Invalid credentials.', 'error');
-                // Add delay to prevent brute force
-                await new Promise(r => setTimeout(r, 1000));
-                return;
-            }
-            
-            // Show loading state
-            const originalBtn = btn.innerHTML;
-            btn.disabled = true;
-            btn.innerHTML = `<div class="loader w-5 h-5 border-2"></div> Verifying...`;
-            
-            try {
-                // In production: Use Firebase Auth with admin custom claims
-                // const { auth } = await loadFirebase();
-                // await signInWithEmailAndPassword(auth, email, pass);
-                // const idToken = await auth.currentUser.getIdTokenResult();
-                // if (!idToken.claims.admin) throw new Error('Not authorized');
-                
-                // Simulation for demo (REMOVE IN PRODUCTION)
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                
-                // Success
-                showToast('Welcome, Administrator!', 'success');
-                
-                // Update UI
-                document.getElementById('admin-lock').classList.add('hidden');
-                document.getElementById('admin-main').classList.remove('hidden');
-                document.getElementById('admin-email').textContent = email;
-                
-                // Initialize dashboard
-                initDashboard();
-                
-            } catch (error) {
-                console.error('Login error:', error);
-                showToast(error.message || 'Authentication failed', 'error');
-                btn.disabled = false;
-                btn.innerHTML = originalBtn;
-            }
-        }
-
-        // 🚪 Logout
-        function logout() {
-            if (confirm('Are you sure you want to sign out of Admin HQ?')) {
-                showToast('Signed out successfully', 'success');
-                // In production: signOut(auth)
-                setTimeout(() => location.reload(), 1000);
-            }
-        }
-
-        // 🔄 Initialize Dashboard
-        let allUsers = [];
-        let currentView = 'table';
-        
-        async function initDashboard() {
-            // Set timestamps
-            document.getElementById('login-time').textContent = new Date().toLocaleTimeString();
-            document.getElementById('admin-year').textContent = new Date().getFullYear();
-            
-            // Mock client IP (in production, get from server)
-            document.getElementById('client-ip').textContent = '192.168.1.' + Math.floor(Math.random() * 255);
-            
-            // Load mock data (replace with Firebase real-time listeners)
-            await loadMockData();
-            
-            // Start auto-refresh (every 30 seconds)
-            setInterval(refreshData, 30000);
-        }
-
-        // 📦 Load Mock Data (Replace with Firebase)
-        async function loadMockData() {
-            // Mock users data
-            allUsers = [
-                { id: 'usr_abc123', username: 'Stany', email: 'stany@example.com', sq: 45, status: 'active', joined: '2024-01-15' },
-                { id: 'usr_def456', username: 'BotMaster', email: 'bot@example.com', sq: 120, status: 'active', joined: '2024-02-20' },
-                { id: 'usr_ghi789', username: 'NewUser', email: 'new@example.com', sq: 10, status: 'active', joined: '2024-12-01' },
-                { id: 'usr_jkl012', username: 'TestAccount', email: 'test@example.com', sq: 0, status: 'suspended', joined: '2024-11-10' }
-            ];
-            
-            // Mock bots count
-            const botsCount = 23;
-            const totalSQ = allUsers.reduce((sum, u) => sum + u.sq, 0);
-            
-            // Update stats
-            document.getElementById('st-users').textContent = allUsers.length;
-            document.getElementById('st-bots').textContent = botsCount;
-            document.getElementById('st-sq').textContent = totalSQ.toLocaleString();
-            document.getElementById('user-count').textContent = `${allUsers.length} users`;
-            document.getElementById('last-update').textContent = `Updated: ${new Date().toLocaleTimeString()}`;
-            document.getElementById('showing-count').textContent = allUsers.length;
-            
-            // Render table
-            renderUserTable(allUsers);
-            
-            // Add mock audit logs
-            addAuditLog('Admin login successful', 'info');
-            addAuditLog('Dashboard data refreshed', 'info');
-        }
-
-        // 📋 Render User Table
-        function renderUserTable(users) {
-            const tbody = document.getElementById('user-rows');
-            
-            if (users.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" class="p-8 text-center text-slate-500">No users found matching your search</td></tr>`;
-                return;
-            }
-            
-            tbody.innerHTML = users.map(user => `
-                <tr class="hover:bg-white/5 transition-colors">
-                    <td class="p-4 md:p-6" data-label="User">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-violet-500 flex items-center justify-center font-bold text-sm">
-                                ${user.username.charAt(0).toUpperCase()}
-                            </div>
-                            <div>
-                                <p class="font-bold">${user.username}</p>
-                                <p class="text-[10px] text-slate-500 font-mono">${user.id}</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="p-4 md:p-6 text-slate-300" data-label="Email">${user.email}</td>
-                    <td class="p-4 md:p-6 text-center" data-label="Balance">
-                        <span class="font-bold text-amber-400">${user.sq} SQ</span>
-                    </td>
-                    <td class="p-4 md:p-6 text-center" data-label="Status">
-                        <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                            user.status === 'active' ? 'bg-emerald-500/15 text-emerald-400' : 'bg-red-500/15 text-red-400'
-                        }">${user.status}</span>
-                    </td>
-                    <td class="p-4 md:p-6 text-right" data-label="Actions">
-                        <div class="flex justify-end gap-2">
-                            <button onclick="addSQ('${user.id}')" class="action-btn primary" title="Add SQ">
-                                <i class="fa-solid fa-plus"></i> Add
-                            </button>
-                            <button onclick="viewUser('${user.id}')" class="action-btn" style="background:rgba(148,163,184,0.15);color:#94a3b8" title="View Details">
-                                <i class="fa-solid fa-eye"></i>
-                            </button>
-                            <button onclick="suspendUser('${user.id}')" class="action-btn danger" title="${user.status === 'active' ? 'Suspend' : 'Activate'}">
-                                <i class="fa-solid ${user.status === 'active' ? 'fa-pause' : 'fa-play'}"></i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            `).join('');
-        }
-
-        // 🔍 Filter Users
-        function filterUsers(query) {
-            const filtered = allUsers.filter(u => 
-                u.username.toLowerCase().includes(query.toLowerCase()) ||
-                u.email.toLowerCase().includes(query.toLowerCase()) ||
-                u.id.toLowerCase().includes(query.toLowerCase())
-            );
-            renderUserTable(filtered);
-            document.getElementById('showing-count').textContent = filtered.length;
-        }
-
-        // 📊 Sort Users
-        function sortUsers() {
-            const sortBy = document.getElementById('sort-by').value;
-            let sorted = [...allUsers];
-            
-            switch(sortBy) {
-                case 'balance': sorted.sort((a,b) => b.sq - a.sq); break;
-                case 'alpha': sorted.sort((a,b) => a.username.localeCompare(b.username)); break;
-                default: sorted.sort((a,b) => new Date(b.joined) - new Date(a.joined));
-            }
-            renderUserTable(sorted);
-        }
-
-        // 👁️ Toggle View (Table/Card)
-        function toggleView() {
-            currentView = currentView === 'table' ? 'card' : 'table';
-            showToast(`Switched to ${currentView} view`, 'info');
-            // Implement card view rendering here if needed
-        }
-
-        // 💰 Add SQ to User
-        window.addSQ = async function(userId) {
-            const amount = prompt('Enter SQ amount to add:');
-            if (!amount || isNaN(amount) || parseInt(amount) <= 0) {
-                showToast('Please enter a valid positive number', 'error');
-                return;
-            }
-            
-            if (!confirm(`Add ${amount} SQ to user ${userId}? This action cannot be undone.`)) return;
-            
-            try {
-                // In production: Use Firebase updateDoc with increment
-                // await updateDoc(doc(db, "users", userId), { sq: increment(parseInt(amount)) });
-                
-                // Mock update
-                const user = allUsers.find(u => u.id === userId);
-                if (user) {
-                    user.sq += parseInt(amount);
-                    renderUserTable(allUsers);
-                    document.getElementById('st-sq').textContent = 
-                        allUsers.reduce((sum, u) => sum + u.sq, 0).toLocaleString();
-                    
-                    addAuditLog(`Added ${amount} SQ to ${user.username}`, 'success');
-                    showToast(`✓ Added ${amount} SQ to ${user.username}`, 'success');
-                }
-            } catch (error) {
-                console.error('Error adding SQ:', error);
-                showToast('Failed to update balance', 'error');
-            }
-        };
-
-        // 📦 Bulk Add SQ
-        function bulkAddSQ() {
-            const userId = document.getElementById('bulk-user-id').value.trim();
-            const amount = document.getElementById('bulk-sq-amount').value;
-            
-            if (!userId || !amount) {
-                showToast('Please enter both user ID and amount', 'error');
-                return;
-            }
-            
-            // Find user by ID or email
-            const user = allUsers.find(u => u.id === userId || u.email === userId);
-            if (!user) {
-                showToast('User not found', 'error');
-                return;
-            }
-            
-            addSQ(user.id);
-            // Clear inputs
-            document.getElementById('bulk-user-id').value = '';
-            document.getElementById('bulk-sq-amount').value = '';
-        }
-
-        // 👁️ View User Details (Modal Placeholder)
-        function viewUser(userId) {
-            const user = allUsers.find(u => u.id === userId);
-            if (!user) return;
-            
-            showToast(`Viewing details for ${user.username}`, 'info');
-            // In production: Open modal with full user profile, activity log, etc.
-        }
-
-        // ⏸️ Suspend/Activate User
-        function suspendUser(userId) {
-            const user = allUsers.find(u => u.id === userId);
-            if (!user) return;
-            
-            const newStatus = user.status === 'active' ? 'suspended' : 'active';
-            const action = newStatus === 'suspended' ? 'suspend' : 'activate';
-            
-            if (!confirm(`${action.charAt(0).toUpperCase() + action.slice(1)} ${user.username}'s account?`)) return;
-            
-            // Mock update
-            user.status = newStatus;
-            renderUserTable(allUsers);
-            addAuditLog(`${action.charAt(0).toUpperCase() + action.slice(1)}ed account: ${user.username}`, 'warning');
-            showToast(`✓ Account ${newStatus}`, 'success');
-        }
-
-        // 📋 Audit Log Functions
-        function toggleAudit() {
-            const panel = document.getElementById('audit-panel');
-            const icon = document.getElementById('audit-toggle-icon');
-            panel.classList.toggle('hidden');
-            icon.style.transform = panel.classList.contains('hidden') ? 'rotate(0)' : 'rotate(180deg)';
-        }
-        
-        function addAuditLog(message, type = 'info') {
-            const panel = document.getElementById('audit-panel');
-            const entry = document.createElement('div');
-            entry.className = 'flex items-start gap-3 text-sm p-3 rounded-lg hover:bg-white/5';
-            
-            const colors = {
-                success: 'text-emerald-400', warning: 'text-amber-400', 
-                error: 'text-red-400', info: 'text-blue-400'
-            };
-            
-            entry.innerHTML = `
-                <i class="fa-solid fa-circle-dot ${colors[type]} mt-1"></i>
-                <div>
-                    <p class="text-slate-300">${message}</p>
-                    <p class="text-[10px] text-slate-500 mt-0.5">${new Date().toLocaleTimeString()}</p>
+    <div id="packageModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center hidden z-50">
+        <div class="bg-gray-900 rounded-2xl p-6 w-96 max-w-full">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold">Buy SQ Tokens</h3>
+                <button onclick="closePackageModal()" class="text-gray-400 hover:text-white"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="space-y-3">
+                <div class="bg-gray-800 p-3 rounded-xl cursor-pointer hover:bg-gray-700 transition" onclick="orderPackage(15, 1000)">
+                    <span class="font-bold">15 SQ</span> – TSh 1,000 (30 days)
                 </div>
-            `;
-            
-            // Add to top
-            panel.insertBefore(entry, panel.firstChild);
-            
-            // Keep only last 20 entries
-            while (panel.children.length > 20) {
-                panel.removeChild(panel.lastChild);
+                <div class="bg-gray-800 p-3 rounded-xl cursor-pointer hover:bg-gray-700 transition" onclick="orderPackage(35, 2000)">
+                    <span class="font-bold">35 SQ</span> – TSh 2,000 (30 days)
+                </div>
+                <div class="bg-gray-800 p-3 rounded-xl cursor-pointer hover:bg-gray-700 transition" onclick="orderPackage(60, 3000)">
+                    <span class="font-bold">60 SQ</span> – TSh 3,000 (30 days)
+                </div>
+                <div class="bg-gray-800 p-3 rounded-xl cursor-pointer hover:bg-gray-700 transition" onclick="orderPackage(80, 4000)">
+                    <span class="font-bold">80 SQ</span> – TSh 4,000 (30 days)
+                </div>
+                <div class="bg-gray-800 p-3 rounded-xl cursor-pointer hover:bg-gray-700 transition" onclick="orderPackage(150, 5000)">
+                    <span class="font-bold">150 SQ</span> – TSh 5,000 (30 days)
+                </div>
+                <div class="border-t border-gray-700 my-2"></div>
+                <div class="bg-gray-800 p-3 rounded-xl cursor-pointer hover:bg-gray-700 transition" onclick="orderPackage(15, 2000)">
+                    <span class="font-bold">15 SQ (Unlimited)</span> – TSh 2,000
+                </div>
+                <div class="bg-gray-800 p-3 rounded-xl cursor-pointer hover:bg-gray-700 transition" onclick="orderPackage(35, 3000)">
+                    <span class="font-bold">35 SQ (Unlimited)</span> – TSh 3,000
+                </div>
+                <!-- Add unlimited variants for others if needed -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, GithubAuthProvider, signInWithPopup, updateProfile } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, query, where, getDocs, addDoc, deleteDoc, serverTimestamp, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-storage.js";
+
+        // Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyAGQqAiYCnWR7X8XkxEXCGu19PU45qXDnc",
+            authDomain: "stanyappstore.firebaseapp.com",
+            projectId: "stanyappstore",
+            storageBucket: "stanyappstore.firebasestorage.app",
+            messagingSenderId: "735017831251",
+            appId: "1:735017831251:web:9fa4184ef141349fb9afa6",
+            measurementId: "G-EM3RTMBKTN"
+        };
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+
+        // Global variables
+        let currentUser = null;
+
+        // Helper: update UI after login
+        async function updateUserUI(user) {
+            if (user) {
+                document.getElementById('userInfo').classList.remove('hidden');
+                document.getElementById('authButtons').classList.add('hidden');
+                document.getElementById('mainContent').classList.remove('hidden');
+                document.getElementById('displayName').innerText = user.displayName || user.email.split('@')[0];
+                if (user.photoURL) document.getElementById('profilePic').src = user.photoURL;
+                else document.getElementById('profilePic').src = 'https://ui-avatars.com/api/?background=3b82f6&color=fff&name=' + (user.displayName || user.email);
+                
+                // Fetch SQ balance from Firestore
+                const userDoc = await getDoc(doc(db, 'users', user.uid));
+                if (userDoc.exists()) {
+                    const data = userDoc.data();
+                    const sqBalance = data.sqBalance || 0;
+                    document.getElementById('sqCount').innerText = sqBalance;
+                    document.getElementById('dashboardSQ').innerText = sqBalance;
+                    document.getElementById('referralCount').innerText = data.referralCount || 0;
+                } else {
+                    // New user: create with 10 SQ and referral handling
+                    const referralCode = localStorage.getItem('referralCode'); // from URL param
+                    let referrerId = null;
+                    if (referralCode) {
+                        // Find referrer by referralCode (we store referralCode as uid or custom)
+                        const q = query(collection(db, 'users'), where('referralCode', '==', referralCode));
+                        const snap = await getDocs(q);
+                        if (!snap.empty) {
+                            referrerId = snap.docs[0].id;
+                        }
+                    }
+                    // Generate unique referral code (user's uid prefix)
+                    const newReferralCode = user.uid.slice(0, 8);
+                    await setDoc(doc(db, 'users', user.uid), {
+                        uid: user.uid,
+                        email: user.email,
+                        displayName: user.displayName || user.email.split('@')[0],
+                        photoURL: user.photoURL || null,
+                        sqBalance: 10,
+                        referralCode: newReferralCode,
+                        referralCount: 0,
+                        referrals: [],
+                        createdAt: serverTimestamp(),
+                        sqExpiry: new Date(Date.now() + 30*24*60*60*1000) // 30 days
+                    });
+                    // If referrer exists, add 3 SQ to referrer
+                    if (referrerId) {
+                        const referrerRef = doc(db, 'users', referrerId);
+                        await updateDoc(referrerRef, {
+                            sqBalance: increment(3),
+                            referralCount: increment(1),
+                            referrals: arrayUnion(user.uid)
+                        });
+                        // Also give new user extra 3 SQ (total 13)
+                        await updateDoc(doc(db, 'users', user.uid), {
+                            sqBalance: increment(3)
+                        });
+                    }
+                    // Refresh UI
+                    updateUserUI(user);
+                }
+                loadDeployments(user.uid);
+                // Set referral link
+                const refCode = (await getDoc(doc(db, 'users', user.uid))).data().referralCode;
+                document.getElementById('referralLink').innerHTML = `${window.location.origin}?ref=${refCode}`;
+            } else {
+                document.getElementById('userInfo').classList.add('hidden');
+                document.getElementById('authButtons').classList.remove('hidden');
+                document.getElementById('mainContent').classList.add('hidden');
             }
         }
 
-        // 🔄 Refresh Data
-        function refreshData() {
-            showToast('Refreshing data...', 'info');
-            // In production: Re-fetch from Firebase
-            setTimeout(() => {
-                document.getElementById('last-update').textContent = `Updated: ${new Date().toLocaleTimeString()}`;
-                showToast('Data refreshed', 'success');
-                addAuditLog('Manual data refresh', 'info');
-            }, 800);
+        function increment(val) {
+            // Firestore increment
+            return firebase.firestore.FieldValue.increment(val);
         }
 
-        // 📤 Export Data (CSV)
-        function exportData() {
-            const headers = ['User ID', 'Username', 'Email', 'SQ Balance', 'Status', 'Joined'];
-            const rows = allUsers.map(u => [u.id, u.username, u.email, u.sq, u.status, u.joined]);
-            
-            let csv = headers.join(',') + '\n';
-            rows.forEach(row => {
-                csv += row.map(field => `"${field}"`).join(',') + '\n';
-            });
-            
-            const blob = new Blob([csv], { type: 'text/csv' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `stany-users-${new Date().toISOString().split('T')[0]}.csv`;
-            a.click();
-            URL.revokeObjectURL(url);
-            
-            showToast('Data exported successfully', 'success');
-            addAuditLog('Exported user data to CSV', 'info');
-        }
-
-        // 🔧 Run Maintenance Check
-        function runMaintenance() {
-            showToast('Running system diagnostics...', 'info');
-            
-            setTimeout(() => {
-                showToast('✓ All systems operational', 'success');
-                addAuditLog('Maintenance check completed - all systems OK', 'success');
-            }, 2000);
-        }
-
-        // 🎯 Initialize on Load
-        document.addEventListener('DOMContentLoaded', () => {
-            // Set current year in footer
-            document.getElementById('admin-year').textContent = new Date().getFullYear();
-            
-            // Keyboard shortcuts
-            document.addEventListener('keydown', (e) => {
-                // Ctrl+R or Cmd+R to refresh
-                if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
-                    e.preventDefault();
-                    if (!document.getElementById('admin-lock').classList.contains('hidden')) return;
-                    refreshData();
-                }
-                // Escape to close modals (future)
-                if (e.key === 'Escape') {
-                    // Close any open modals
-                }
-            });
-            
-            // Auto-focus email field on lock screen
-            const emailInput = document.getElementById('ad-email');
-            if (emailInput && !document.getElementById('admin-main').classList.contains('hidden') === false) {
-                emailInput.focus();
+        async function loadDeployments(uid) {
+            const q = query(collection(db, 'deployments'), where('userId', '==', uid));
+            const snap = await getDocs(q);
+            const listDiv = document.getElementById('deploymentsList');
+            if (snap.empty) {
+                listDiv.innerHTML = '<div class="text-center text-gray-400 py-8">No deployments yet. Deploy your first bot!</div>';
+                return;
             }
+            let html = '';
+            snap.forEach(docSnap => {
+                const d = docSnap.data();
+                html += `
+                    <div class="bg-gray-800 rounded-xl p-4 flex justify-between items-center">
+                        <div>
+                            <h3 class="font-bold"><i class="fas fa-robot mr-2 text-blue-400"></i>${d.botName}</h3>
+                            <p class="text-sm text-gray-400">Repo: ${d.repoUrl}</p>
+                            <p class="text-xs text-gray-500">Deployed: ${d.createdAt?.toDate().toLocaleString()}</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="manageDeployment('${docSnap.id}', 'stop')" class="bg-red-600/20 hover:bg-red-600/40 p-2 rounded-xl"><i class="fas fa-stop"></i></button>
+                            <button onclick="manageDeployment('${docSnap.id}', 'restart')" class="bg-green-600/20 hover:bg-green-600/40 p-2 rounded-xl"><i class="fas fa-sync-alt"></i></button>
+                            <button onclick="manageDeployment('${docSnap.id}', 'delete')" class="bg-gray-600/20 hover:bg-gray-600/40 p-2 rounded-xl"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                `;
+            });
+            listDiv.innerHTML = html;
+        }
+
+        // Deployment simulation (will call Vercel API later)
+        async function deployBot() {
+            const repo = document.getElementById('botRepoSelect').value;
+            const botName = document.getElementById('botName').value.trim();
+            if (!botName) return alert('Please enter a bot name');
+            const user = auth.currentUser;
+            if (!user) return alert('Please login');
+            const userDoc = await getDoc(doc(db, 'users', user.uid));
+            const sqBalance = userDoc.data().sqBalance || 0;
+            if (sqBalance < 5) {
+                alert('You need at least 5 SQ to deploy a bot. Buy more SQ.');
+                return;
+            }
+            // Deduct SQ
+            await updateDoc(doc(db, 'users', user.uid), {
+                sqBalance: sqBalance - 5
+            });
+            // Create deployment record
+            const deploymentRef = await addDoc(collection(db, 'deployments'), {
+                userId: user.uid,
+                botName: botName,
+                repoUrl: repo,
+                status: 'deploying',
+                createdAt: serverTimestamp(),
+                updatedAt: serverTimestamp()
+            });
+            // Simulate deployment: after 3 seconds, mark as active
+            setTimeout(async () => {
+                await updateDoc(deploymentRef, {
+                    status: 'active',
+                    url: `https://${botName.toLowerCase().replace(/\s/g, '-')}.stanyhost.com` // fake url
+                });
+                loadDeployments(user.uid);
+            }, 3000);
+            // Update UI
+            alert('Deployment started! You will be notified when ready.');
+            loadDeployments(user.uid);
+            // Refresh SQ
+            const newDoc = await getDoc(doc(db, 'users', user.uid));
+            document.getElementById('sqCount').innerText = newDoc.data().sqBalance;
+            document.getElementById('dashboardSQ').innerText = newDoc.data().sqBalance;
+        }
+
+        // Manage deployment (stop/restart/delete) – simulated
+        async function manageDeployment(docId, action) {
+            if (action === 'delete') {
+                if (confirm('Delete this deployment?')) {
+                    await deleteDoc(doc(db, 'deployments', docId));
+                    loadDeployments(auth.currentUser.uid);
+                }
+            } else {
+                alert(`Action "${action}" would be executed on the server.`);
+            }
+        }
+
+        // Package ordering
+        function orderPackage(sq, price) {
+            const user = auth.currentUser;
+            if (!user) return alert('Please login');
+            const message = `Order: ${sq} SQ for TSh ${price}\nUsername: ${user.email}\nUserID: ${user.uid}`;
+            const whatsappUrl = `https://wa.me/255758000000?text=${encodeURIComponent(message)}`; // replace with admin number
+            window.open(whatsappUrl, '_blank');
+            closePackageModal();
+        }
+
+        // Auth modal functions
+        function showAuthModal(type) {
+            const modal = document.getElementById('authModal');
+            const title = document.getElementById('modalTitle');
+            title.innerText = type === 'login' ? 'Login' : 'Sign Up';
+            const formDiv = document.getElementById('authForm');
+            if (type === 'login') {
+                formDiv.innerHTML = `
+                    <input type="email" id="loginEmail" placeholder="Email" class="w-full bg-gray-800 border border-gray-700 rounded-xl p-2 mb-3">
+                    <input type="password" id="loginPassword" placeholder="Password" class="w-full bg-gray-800 border border-gray-700 rounded-xl p-2 mb-4">
+                    <button onclick="loginWithEmail()" class="btn-primary w-full py-2 rounded-xl"><i class="fas fa-sign-in-alt mr-2"></i>Login</button>
+                `;
+            } else {
+                formDiv.innerHTML = `
+                    <input type="text" id="signupName" placeholder="Full Name" class="w-full bg-gray-800 border border-gray-700 rounded-xl p-2 mb-3">
+                    <input type="email" id="signupEmail" placeholder="Email" class="w-full bg-gray-800 border border-gray-700 rounded-xl p-2 mb-3">
+                    <input type="password" id="signupPassword" placeholder="Password" class="w-full bg-gray-800 border border-gray-700 rounded-xl p-2 mb-4">
+                    <button onclick="signupWithEmail()" class="btn-primary w-full py-2 rounded-xl"><i class="fas fa-user-plus mr-2"></i>Sign Up</button>
+                `;
+            }
+            modal.classList.remove('hidden');
+        }
+        window.showAuthModal = showAuthModal;
+
+        async function loginWithEmail() {
+            const email = document.getElementById('loginEmail').value;
+            const pass = document.getElementById('loginPassword').value;
+            try {
+                await signInWithEmailAndPassword(auth, email, pass);
+                closeAuthModal();
+            } catch (e) {
+                alert(e.message);
+            }
+        }
+        window.loginWithEmail = loginWithEmail;
+
+        async function signupWithEmail() {
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const pass = document.getElementById('signupPassword').value;
+            try {
+                const cred = await createUserWithEmailAndPassword(auth, email, pass);
+                await updateProfile(cred.user, { displayName: name });
+                closeAuthModal();
+            } catch (e) {
+                alert(e.message);
+            }
+        }
+        window.signupWithEmail = signupWithEmail;
+
+        async function loginWithGitHub() {
+            const provider = new GithubAuthProvider();
+            try {
+                const result = await signInWithPopup(auth, provider);
+                // GitHub may not return displayName, set it
+                if (!result.user.displayName) {
+                    await updateProfile(result.user, { displayName: result.user.email.split('@')[0] });
+                }
+                closeAuthModal();
+            } catch (e) {
+                alert(e.message);
+            }
+        }
+        window.loginWithGitHub = loginWithGitHub;
+
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.add('hidden');
+        }
+        window.closeAuthModal = closeAuthModal;
+
+        function openPackageModal() {
+            document.getElementById('packageModal').classList.remove('hidden');
+        }
+        window.openPackageModal = openPackageModal;
+
+        function closePackageModal() {
+            document.getElementById('packageModal').classList.add('hidden');
+        }
+        window.closePackageModal = closePackageModal;
+
+        function copyReferralLink() {
+            const link = document.getElementById('referralLink').innerText;
+            navigator.clipboard.writeText(link);
+            alert('Referral link copied!');
+        }
+        window.copyReferralLink = copyReferralLink;
+
+        function logout() {
+            signOut(auth);
+        }
+        window.logout = logout;
+
+        // Check for referral code in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const refCode = urlParams.get('ref');
+        if (refCode) {
+            localStorage.setItem('referralCode', refCode);
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            currentUser = user;
+            updateUserUI(user);
         });
 
-        // 🧩 Firebase Loader (Production Ready - Lazy Load)
-        async function loadFirebase() {
-            // Only load when actually needed (performance optimization)
-            const [
-                { initializeApp },
-                { getAuth, signInWithEmailAndPassword, signOut },
-                { getFirestore, collection, doc, updateDoc, increment, onSnapshot }
-            ] = await Promise.all([
-                import("https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"),
-                import("https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"),
-                import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js")
-            ]);
-            
-            const firebaseConfig = {
-                apiKey: "AIzaSyAGQqAiYCnWR7X8XkxEXCGu19PU45qXDnc",
-                authDomain: "stanyappstore.firebaseapp.com",
-                projectId: "stanyappstore",
-                storageBucket: "stanyappstore.firebasestorage.app",
-                messagingSenderId: "735017831251",
-                appId: "1:735017831251:web:9fa4184ef141349fb9afa6"
-            };
-            
-            const app = initializeApp(firebaseConfig);
-            return {
-                auth: getAuth(app),
-                db: getFirestore(app),
-                signInWithEmailAndPassword,
-                signOut,
-                collection,
-                doc,
-                updateDoc,
-                increment,
-                onSnapshot
-            };
-        }
+        // Expose functions globally
+        window.deployBot = deployBot;
+        window.manageDeployment = manageDeployment;
+        window.orderPackage = orderPackage;
     </script>
 </body>
 </html>
-
-
-
-              <script>
-                              // In Firebase Console: Set custom claim "admin: true" for your account
-// Then verify in code:
-const idTokenResult = await user.getIdTokenResult();
-if (!idTokenResult.claims.admin) throw new Error('Unauthorized');
-
-// firestore.rules
-match /users/{userId} {
-  allow read: if request.auth != null && request.auth.token.admin == true;
-  allow write: if request.auth != null && request.auth.token.admin == true;
-}
-
-
-              </script>
-                        </body>
-                        </html>
-                    
